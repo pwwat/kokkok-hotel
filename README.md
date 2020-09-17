@@ -1,4 +1,5 @@
 # kokkok-hotel
+<<<<<<< HEAD
 
 ## Build Setup
 
@@ -18,3 +19,6 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+=======
+Example Project With Nuxt + Express + Sequlize
+>>>>>>> f691d369d1d52e9d915d9692083de9301244b936
