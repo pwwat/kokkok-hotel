@@ -24,7 +24,7 @@ try {
   let sequelize = null
 
   // เช็คว่าอยู่บนเซิฟเวอร์รึเปล่า เพราะบนเซิฟเวอร์จะมี environment นี้
-  if (!process.env.DATABASE_URL) {
+  if (process.env.DATABASE_URL) {
     // ตั้งค่าเพิ่มเติมถ้าเป็น postgresql
     optionConfig.port = 5432
     optionConfig.dialectOptions.ssl = {
