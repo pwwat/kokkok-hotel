@@ -3,7 +3,6 @@ const Sequelize = require('sequelize')
 // Option 1: Passing parameters separately
 try {
   let optionConfig = {
-    host: 'https://wat-hotel.herokuapp.com',
     // ประเภทการเชื่อมต่อ ถ้าทำใน localhost เป็น mysql นะครับ หรือถ้าใครสะดวกเป็น postgres ไปเลยก็ได้เน้อ
     // แต่ถ้าอยู่บนเซิฟเวอร์จะเป็น postgres นะครับ
     dialect: process.env.DATABASE_URL ? 'postgres' : 'mysql',
