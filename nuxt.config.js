@@ -86,7 +86,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: process.env.SERVER_URL || 'http://localhost:3000/api',
+    baseURL: process.env.SERVER_URL || '/api',
     credentials: false,
     proxyHeaders: false
   },
