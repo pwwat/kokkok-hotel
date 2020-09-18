@@ -13,7 +13,6 @@ export default {
     baseUrl: process.env.BASE_URL || 'https://damp-mountain-75279.herokuapp.com/'
   },
   server: {
-    port: process.env.PORT || 3000, // default: 3000
     host: process.env.NUXT_HOST || 'localhost' // default: localhost
   },
 
