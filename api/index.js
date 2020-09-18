@@ -17,6 +17,12 @@ const oneHour = 3600000 // 3600000 msec == 1hour
 // __dirname เรียกจาก root ก่อนเสมอ (เผื่อในกรณี public ย้ายไปอยู่ที่อื่น)
 app.use('/public', express.static(__dirname + '/public', { maxAge: oneHour }))
 
+// Require & Import API routes
+const router = require('./routes/index')
+
+// Use API Routes
+app.use(router)
+
 // Export the server middleware
 const application = {
   path: '/api',
