@@ -43,10 +43,10 @@ try {
       console.log('Connected Success')
     })
     .catch(function (err) {
-      console.log('Connection Error! : ' + err)
+      console.log('Connection Sequelize Error! : ' + err)
     })
 
   module.exports = sequelize
 } catch (e) {
-  console.error('Error Connection: ' + e)
+  console.error('Connection Error! :  ' + e)
 }
