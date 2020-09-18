@@ -3,6 +3,7 @@ const Sequelize = require('sequelize')
 // Option 1: Passing parameters separately
 try {
   let optionConfig = {
+    host: 'https://damp-mountain-75279.herokuapp.com',
     // ประเภทการเชื่อมต่อ ถ้าทำใน localhost เป็น mysql นะครับ หรือถ้าใครสะดวกเป็น postgres ไปเลยก็ได้เน้อ
     // แต่ถ้าอยู่บนเซิฟเวอร์จะเป็น postgres นะครับ
     dialect: process.env.DATABASE_URL ? 'postgres' : 'mysql',
@@ -43,10 +44,10 @@ try {
       console.log('Connected Success')
     })
     .catch(function (err) {
-      console.log('Connection Error! : ' + err)
+      console.log('Connection Sequelize Error! : ' + err)
     })
 
   module.exports = sequelize
 } catch (e) {
-  console.error('Error Connection: ' + e)
+  console.error('Connection Error! :  ' + e)
 }
