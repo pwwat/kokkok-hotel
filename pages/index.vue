@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div style="text-align: center;">
+    <Logo/>
     <h2>KokKok Hotel</h2>
     <p>Users: {{ users }}</p>
   </div>
