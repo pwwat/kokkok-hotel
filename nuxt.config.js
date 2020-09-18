@@ -10,7 +10,7 @@ export default {
 
   devtool: (env === 'development') ? 'inline-source-map' : false,
   env: {
-    baseUrl: process.env.BASE_URL || 'https://damp-mountain-75279.herokuapp.com/'
+    baseUrl: process.env.NUXT_URL || 'localhost'
   },
   server: {
     host: process.env.NUXT_HOST || 'localhost' // default: localhost
