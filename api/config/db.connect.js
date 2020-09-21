@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize')
 require('dotenv').config()
+const Sequelize = require('sequelize')
 
 // Option 1: Passing parameters separately
 try {
@@ -28,6 +28,7 @@ try {
   if (process.env.DATABASE_URL) {
     // ตั้งค่าเพิ่มเติมถ้าเป็น postgresql
     optionConfig.port = 5432
+    optionConfig.schema = 'kokkok'
     optionConfig.dialectOptions.ssl = {
       require: true,
       rejectUnauthorized: false
