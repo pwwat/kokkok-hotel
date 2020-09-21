@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+require('dotenv').config()
 
 // Option 1: Passing parameters separately
 try {
