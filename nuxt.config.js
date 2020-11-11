@@ -44,37 +44,12 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    script: [
-      {
-        src: 'https://code.jquery.com/jquery-3.5.1.slim.min.js',
-        integrity: 'sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj',
-        crossorigin: 'anonymous',
-        body: true
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js',
-        integrity: 'sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN',
-        crossorigin: 'anonymous',
-        body: true
-      },
-      {
-        src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js',
-        integrity: 'sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV',
-        crossorigin: 'anonymous',
-        body: true
-      }
-    ],
+    script: [],
     link: [
       {
         rel: 'icon',
         type: 'image/x-icon',
         href: '/favicon.ico'
-      },
-      {
-        rel: 'stylesheet',
-        integrity: 'sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z',
-        href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css',
-        crossorigin: 'anonymous'
       }
     ]
   },
@@ -86,7 +61,13 @@ export default {
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
-  plugins: [],
+  plugins: [
+    {
+      src: '~/plugins/localStorage.js',
+      ssr: false
+    }
+    // '~/plugins/axios'
+  ],
   /*
   ** Auto import components
   ** See https://nuxtjs.org/api/configuration-components
@@ -112,15 +93,21 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'bootstrap-vue/nuxt',
+    'vue-sweetalert2/nuxt'
   ],
+
+  bootstrapVue: {
+    icons: true // Install the IconsPlugin (in addition to BootStrapVue plugin
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
     baseURL: process.env.SERVER_URL || '/api',
-    credentials: false,
+    credentials: true,
     proxyHeaders: false
   },
   /*

@@ -1,3 +1,5 @@
+import { authenticateJWT } from '../middleware/auth'
+
 const express = require('express')
 const router = express.Router()
 
@@ -9,6 +11,8 @@ const UserController = require('../controllers/UserController')
 router.get('/', IndexController.index)
 
 // User Controller
-router.get('/users', UserController.index)
+router.get('/users', authenticateJWT, UserController.index)
+router.post('/login', UserController.login)
+router.post('/register', UserController.register)
 
 module.exports = router

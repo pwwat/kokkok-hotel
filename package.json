@@ -12,11 +12,26 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.2",
+    "bootstrap-vue": "^2.17.3",
+    "cookie-parser": "^1.4.5",
+    "crypto-js": "^4.0.0",
+    "dayjs": "^1.9.5",
     "dotenv": "^8.2.0",
-    "nuxt": "^2.14.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nuxt": "^2.14.5",
     "pg": "^8.3.3",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.3.5"
+    "secure-ls": "^1.2.6",
+    "sequelize": "^6.3.5",
+    "simple-browser-fingerprint": "^1.0.0",
+    "vue": "^2.6.12",
+    "vue-sweetalert2": "^3.0.8",
+    "vuex-persistedstate": "^3.1.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
