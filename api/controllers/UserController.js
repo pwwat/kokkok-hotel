@@ -56,6 +56,8 @@ module.exports = {
         // ลบพาสเวิร์ดออกจาก payload ป้องกันข้อมูลหลุดออกไป
         delete payload.password
 
+        console.log('ACCESS_TOKEN_LIFE ', process.env.ACCESS_TOKEN_LIFE)
+
         const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
           algorithm: 'HS256',
           expiresIn: process.env.ACCESS_TOKEN_LIFE // jwt มีอายุ 30 นาที
@@ -74,12 +76,12 @@ module.exports = {
 
         const encryptToken = crypt.encryptWithAES(accessToken)
 
-        // cookie มีอายุ 60 นาที
+        // cookie มีอายุ 1 วัน
         res.cookie('token', encryptToken, {
           httpOnly: true, // ปิดการเข้าถึงจาก client
           sameSite: true, // ใช้ได้ในกรณีจากโดเมนเดียวกัน
           secure: isProduction, // ใช้กับ https เท่านั้น (ถ้าเป็นโหมด Develop ให้เป็น false)
-          expires: new Date(dayjs().add(60, 'm'))
+          expires: new Date(dayjs().add(1, 'd'))
         })
 
         const encryptRefreshToken = crypt.encryptWithAES(refreshToken)
@@ -109,8 +111,6 @@ module.exports = {
       error: false,
       message: 'Success'
     }
-
-    console.log('requestt', req.body)
 
     const firstname = req.body.firstname
     const lastname = req.body.lastname
