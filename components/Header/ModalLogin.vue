@@ -17,7 +17,8 @@
           <b-input-group-prepend is-text>
             <b-icon icon="key"></b-icon>
           </b-input-group-prepend>
-          <b-form-input id="password" type="password" v-model="form.password" placeholder="Password" required></b-form-input>
+          <b-form-input id="password" type="password" v-model="form.password" placeholder="Password"
+                        required></b-form-input>
         </b-input-group>
       </b-form-group>
 
@@ -43,23 +44,25 @@ export default {
     openModal () {
       this.$refs.myModal.show()
     },
-    submitLogin () {
-      this.$store.dispatch('user/login', this.form).then(res => {
-        if (!res.error) {
+    async submitLogin () {
+      try {
+        let result = await this.$store.dispatch('user/login', this.form)
+        if (!result.error) {
+          this.$refs.myModal.hide()
           this.$swal({
             icon: 'success',
             text: 'สำเร็จ'
           })
         } else {
-          console.log('submitLogin', res)
-          throw new Error(res.message)
+          throw new Error(result.message)
         }
-      }).catch(err => {
+      } catch (err) {
+        this.$refs.myModal.hide()
         this.$swal({
           icon: 'error',
           text: 'ผิดพลาด ' + err
         })
-      })
+      }
     }
   }
 }

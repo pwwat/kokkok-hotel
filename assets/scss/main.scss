@@ -1,0 +1,10 @@
+div.jumbotron.jumbotron-fluid {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)), url('../../static/images/header_cover.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  min-height: 480px;
+}

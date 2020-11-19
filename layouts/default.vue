@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <Header/>
     <Nuxt/>
   </div>
 </template>
@@ -9,9 +9,13 @@
 
 </style>
 <script>
-import Navbar from '@/components/Header/Navbar'
+import Header from '~/components/Header/Index'
 
 export default {
-  components: { Navbar }
+  components: { Header }
 }
 </script>
+
+<style>
+@import "../assets/scss/main.scss";
+</style>

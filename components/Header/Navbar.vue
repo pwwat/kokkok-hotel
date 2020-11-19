@@ -1,6 +1,6 @@
 <template>
   <section>
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar toggleable="lg" type="light" class="bg-transparent">
       <b-container>
         <b-navbar-brand href="#">NavBar</b-navbar-brand>
 
@@ -13,10 +13,29 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-button variant="outline-primary" class="mr-3 login-button" @click.prevent="openModalLogin">
-              Login
-            </b-button>
-            <b-button variant="primary" @click.prevent="openModalRegister">Sign Up</b-button>
+            <b-overlay :show="!isLoaded" rounded="sm">
+
+              <template v-if="user">
+                <b-nav-item-dropdown right>
+                  <!-- Using 'button-content' slot -->
+                  <template #button-content>
+                    {{ user.firstname }}
+                    <b-img :src="user.profile_image_url" width="56" rounded="circle" alt="Circle image"></b-img>
+                  </template>
+                  <b-dropdown-item href="#">Profile</b-dropdown-item>
+                  <b-dropdown-item href="#" @click.prevent="logout">Sign Out</b-dropdown-item>
+                </b-nav-item-dropdown>
+              </template>
+              <template v-else>
+                <b-form>
+                  <b-button variant="outline-primary" class="mr-3 login-button" @click.prevent="openModalLogin">
+                    Login
+                  </b-button>
+                  <b-button variant="primary" @click.prevent="openModalRegister">Sign Up</b-button>
+                </b-form>
+              </template>
+            </b-overlay>
+
           </b-navbar-nav>
         </b-collapse>
       </b-container>
@@ -33,14 +52,24 @@ import ModalRegister from '@/components/Header/ModalRegister'
 import { mapState } from 'vuex'
 
 export default {
-  name: 'Header',
+  name: 'Navbar',
   components: {
     ModalRegister,
     ModalLogin
   },
+  data () {
+    return {
+      isLoaded: false
+    }
+  },
   computed: {
     ...mapState({
       user: state => state.user.user
+    })
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.isLoaded = true
     })
   },
   methods: {
@@ -49,6 +78,20 @@ export default {
     },
     openModalRegister () {
       this.$refs.modalRegister.openModal()
+    },
+    async logout () {
+      try {
+        let { data } = await this.$store.dispatch('user/logout')
+        this.$swal({
+          icon: 'success',
+          text: 'สำเร็จ'
+        })
+      } catch (err) {
+        this.$swal({
+          icon: 'error',
+          text: 'ผิดพลาด ' + err
+        })
+      }
     }
   }
 }

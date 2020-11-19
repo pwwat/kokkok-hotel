@@ -13,6 +13,7 @@ router.get('/', IndexController.index)
 // User Controller
 router.get('/users', authenticateJWT, UserController.index)
 router.post('/login', UserController.login)
+router.post('/logout', UserController.logout)
 router.post('/register', UserController.register)
 
 module.exports = router

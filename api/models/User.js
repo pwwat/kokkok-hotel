@@ -10,6 +10,10 @@ User.init({
     autoIncrement: true,
     allowNull: false
   },
+  profile_image_url: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
   firstname: {
     type: DataTypes.STRING(100),
     allowNull: false

@@ -1,7 +1,6 @@
 <template>
   <div style="text-align: center;">
     <Logo />
-    <h2>KokKok Hotel</h2>
     {{ user }}
   </div>
 </template>
@@ -26,14 +25,14 @@ export default {
   methods: {
     async getUsers () {
       try {
-        let { data } = await this.$axios.get('/users')
+        let data = await this.$axios.$get('/users')
         if (!data.error) {
           this.users = data.users
         } else {
           alert('ผิดพลาด ' + data.message)
         }
       } catch (err) {
-        console.error(err)
+        console.log(err)
       }
     }
   }

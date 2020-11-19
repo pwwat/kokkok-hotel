@@ -1,7 +1,6 @@
 import Bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
+import { setUpCookie } from '../middleware/auth'
 import User from '../models/User'
-import crypt from '../utilities/crypt'
 
 const dayjs = require('dayjs')
 
@@ -10,18 +9,20 @@ module.exports = {
     let response = {
       error: false,
       message: 'Success',
-      users: []
+      users: [],
+      code: 200
     }
 
     try {
-      response.users = await User.findAll()
+      let users = await User.findAll()
+      response.users = JSON.parse(JSON.stringify(users))
     } catch (err) {
       response.error = true
       response.message = err.message
-      return res.status(400).json(response)
+      response.code = 400
     }
 
-    return res.status(res.statusCode).json(response)
+    return res.status(response.code).json(response)
   },
   login: async (req, res) => {
     let response = {
@@ -51,50 +52,17 @@ module.exports = {
         }
 
         let payload = { ...user }
-        let isProduction = process.env.NODE_ENV === 'production'
 
         // ลบพาสเวิร์ดออกจาก payload ป้องกันข้อมูลหลุดออกไป
         delete payload.password
 
-        console.log('ACCESS_TOKEN_LIFE ', process.env.ACCESS_TOKEN_LIFE)
+        // Assign Token
+        let result = setUpCookie(res, null, payload)
+        if (result.error) {
+          throw new Error(result.message)
+        }
 
-        const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-          algorithm: 'HS256',
-          expiresIn: process.env.ACCESS_TOKEN_LIFE // jwt มีอายุ 30 นาที
-        })
-
-        // REFRESH TOKEN
-        const REFRESH_TOKEN = process.env.REFRESH_TOKEN_SECRET
-
-        const refreshToken = jwt.sign({
-          id: payload.id,
-          email: payload.email
-        }, REFRESH_TOKEN, {
-          algorithm: 'HS256',
-          expiresIn: process.env.REFRESH_TOKEN_LIFE // refresh token มีอายุ 1 สัปดาห์
-        })
-
-        const encryptToken = crypt.encryptWithAES(accessToken)
-
-        // cookie มีอายุ 1 วัน
-        res.cookie('token', encryptToken, {
-          httpOnly: true, // ปิดการเข้าถึงจาก client
-          sameSite: true, // ใช้ได้ในกรณีจากโดเมนเดียวกัน
-          secure: isProduction, // ใช้กับ https เท่านั้น (ถ้าเป็นโหมด Develop ให้เป็น false)
-          expires: new Date(dayjs().add(1, 'd'))
-        })
-
-        const encryptRefreshToken = crypt.encryptWithAES(refreshToken)
-
-        // cookie มีอายุ 1 สัปดาห์
-        res.cookie('refresh_token', encryptRefreshToken, {
-          httpOnly: true, // ปิดการเข้าถึงจาก client
-          sameSite: true, // ใช้ได้ในกรณีจากโดเมนเดียวกัน
-          secure: isProduction, // ใช้กับ https เท่านั้น (ถ้าเป็นโหมด Develop ให้เป็น false)
-          expires: new Date(dayjs().add(1, 'w'))
-        })
-
-        response.user = user
+        response.user = payload
       } else {
         throw new Error('Invalid Email or Password.')
       }
@@ -109,7 +77,8 @@ module.exports = {
   register: async (req, res) => {
     let response = {
       error: false,
-      message: 'Success'
+      message: 'Success',
+      code: 200
     }
 
     const firstname = req.body.firstname
@@ -131,12 +100,40 @@ module.exports = {
         return user.get()
       })
 
+      delete user.password
+
+      // Assign Token
+      let result = setUpCookie(res, null, user)
+      if (result.error) {
+        throw new Error(result.message)
+      }
+
       response.user = user
     } catch (err) {
       response.error = true
       response.message = 'ผิดพลาด ' + err.message
+      response.code = 400
     }
 
-    return res.status(200).json(response)
+    return res.status(response.code).json(response)
+  },
+  logout: async (req, res) => {
+    let response = {
+      error: false,
+      message: 'Success',
+      code: 200
+    }
+
+    try {
+      let result = setUpCookie(res, null, null)
+      if (result.error) {
+        throw new Error(result.message)
+      }
+    } catch (err) {
+      response.error = true
+      response.message = 'ผิดพลาด ' + err.message
+      response.code = 400
+    }
+    return res.status(response.code).json(response)
   }
 }

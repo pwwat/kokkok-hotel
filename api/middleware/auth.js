@@ -10,8 +10,8 @@ const authenticateJWT = async (req, res, next) => {
   const accessToken = req.cookies.token
   const refreshToken = req.cookies.refresh_token
 
-  const token = req.cookies.token ? crypt.decryptWithAES(accessToken) : null
-  const decryptRefreshToken = crypt.decryptWithAES(refreshToken)
+  const token = accessToken ? crypt.decryptWithAES(accessToken) : null
+  const decryptRefreshToken = refreshToken ? crypt.decryptWithAES(refreshToken) : null
 
   if (accessToken && refreshToken) {
     let user = null
@@ -49,7 +49,12 @@ const authenticateJWT = async (req, res, next) => {
           message: 'Unauthorized!'
         })
       } else {
-        setUpCookie(res, token)
+        let result = setUpCookie(res, token)
+        if (result.error) {
+          return res.status(401).send({
+            message: 'Unauthorized! ' + result.message
+          })
+        }
       }
     }
 
@@ -65,7 +70,12 @@ const authenticateJWT = async (req, res, next) => {
       })
     }
 
-    setUpCookie(res, accessToken)
+    let result = setUpCookie(res, accessToken)
+    if (result.error) {
+      return res.status(401).send({
+        message: 'Unauthorized! ' + result.message
+      })
+    }
     next()
   } else {
     return res.status(403).send({
@@ -114,25 +124,74 @@ const reGenerateAccessToken = async (decryptRefreshToken) => {
   }
 }
 
-const setUpCookie = (res, accessToken = null) => {
-  if (accessToken) {
-    const encryptToken = crypt.encryptWithAES(accessToken)
+const setUpCookie = (res, accessToken = null, user = null) => {
+  try {
+    if (accessToken && !user) {
+      const encryptToken = crypt.encryptWithAES(accessToken)
 
-    // cookie มีอายุ 1 วัน
-    res.cookie('token', encryptToken, {
-      httpOnly: true, // ปิดการเข้าถึงจาก client
-      sameSite: true, // ใช้ได้ในกรณีจากโดเมนเดียวกัน
-      secure: isProduction, // ใช้กับ https เท่านั้น (ถ้าเป็นโหมด Develop ให้เป็น false)
-      expires: new Date(dayjs().add(1, 'd'))
-    })
-  } else {
-    res.cookie('token', null, { expires: new Date(Date.now()) })
-    res.cookie('refresh_token', null, { expires: new Date(Date.now()) })
+      // cookie มีอายุ 1 วัน
+      res.cookie('token', encryptToken, {
+        httpOnly: true, // ปิดการเข้าถึงจาก client
+        sameSite: true, // ใช้ได้ในกรณีจากโดเมนเดียวกัน
+        secure: isProduction, // ใช้กับ https เท่านั้น (ถ้าเป็นโหมด Develop ให้เป็น false)
+        expires: new Date(dayjs().add(1, 'd'))
+      })
+    } else if (user) {
+      // Reset Assign Token
+      const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+        algorithm: 'HS256',
+        expiresIn: process.env.ACCESS_TOKEN_LIFE // jwt มีอายุ 30 นาที
+      })
+
+      // REFRESH TOKEN
+      const REFRESH_TOKEN = process.env.REFRESH_TOKEN_SECRET
+
+      const refreshToken = jwt.sign({
+        id: user.id,
+        email: user.email
+      }, REFRESH_TOKEN, {
+        algorithm: 'HS256',
+        expiresIn: process.env.REFRESH_TOKEN_LIFE // refresh token มีอายุ 1 สัปดาห์
+      })
+
+      const encryptToken = crypt.encryptWithAES(accessToken)
+
+      // cookie มีอายุ 1 วัน
+      res.cookie('token', encryptToken, {
+        httpOnly: true, // ปิดการเข้าถึงจาก client
+        sameSite: true, // ใช้ได้ในกรณีจากโดเมนเดียวกัน
+        secure: isProduction, // ใช้กับ https เท่านั้น (ถ้าเป็นโหมด Develop ให้เป็น false)
+        expires: new Date(dayjs().add(1, 'd'))
+      })
+
+      const encryptRefreshToken = crypt.encryptWithAES(refreshToken)
+
+      // cookie มีอายุ 1 สัปดาห์
+      res.cookie('refresh_token', encryptRefreshToken, {
+        httpOnly: true, // ปิดการเข้าถึงจาก client
+        sameSite: true, // ใช้ได้ในกรณีจากโดเมนเดียวกัน
+        secure: isProduction, // ใช้กับ https เท่านั้น (ถ้าเป็นโหมด Develop ให้เป็น false)
+        expires: new Date(dayjs().add(1, 'w'))
+      })
+    } else {
+      // ถ้าไม่มีการ set อะไรมาแปลว่าต้องหลุดออกจากระบบ
+      res.cookie('token', null, { expires: new Date(Date.now()) })
+      res.cookie('refresh_token', null, { expires: new Date(Date.now()) })
+    }
+
+    return {
+      error: false,
+      message: 'Success'
+    }
+  } catch (err) {
+    return {
+      error: true,
+      message: err
+    }
   }
-
-  return true
 }
 
 export {
-  authenticateJWT
+  authenticateJWT,
+  setUpCookie
 }
