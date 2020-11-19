@@ -15,7 +15,7 @@ module.exports = {
 
     try {
       let users = await User.findAll()
-      response.users = JSON.parse(JSON.stringify(users))
+      response.users = users
     } catch (err) {
       response.error = true
       response.message = err.message
