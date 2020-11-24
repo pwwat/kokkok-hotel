@@ -6,7 +6,7 @@ export default function ({ $axios, redirect, app }) {
   $axios.onError(error => {
     const code = parseInt(error.response && error.response.status)
     if (code === 401 || code === 403) {
-      console.log('errorrrrr')
+      console.log('Error Code: ' + code)
 
       app.store.dispatch('user/logout')
       redirect('/')

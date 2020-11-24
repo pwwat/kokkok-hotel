@@ -25,14 +25,14 @@ export default {
   methods: {
     async getUsers () {
       try {
-        let data = await this.$axios.$get('/users')
+        let data = await this.$axios.get('/users')
         if (!data.error) {
           this.users = data.users
         } else {
           alert('ผิดพลาด ' + data.message)
         }
       } catch (err) {
-        console.log(err)
+        console.log('Get user ' + err)
       }
     }
   }

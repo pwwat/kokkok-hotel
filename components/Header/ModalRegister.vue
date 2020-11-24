@@ -28,7 +28,7 @@
           <b-input-group-prepend is-text>
             <b-icon icon="phone"></b-icon>
           </b-input-group-prepend>
-          <b-form-input id="phone" v-model="form.tel" type="tel"
+          <b-form-input id="phone" v-model="form.tel" type="number"
                         placeholder="Tel" required
           ></b-form-input>
         </b-input-group>
@@ -62,7 +62,6 @@
         <b-button variant="primary" type="submit">Register</b-button>
       </b-form-group>
     </b-form>
-    </b-form>
   </b-modal>
 </template>
 
@@ -84,20 +83,31 @@ export default {
     openModal () {
       this.$refs.myModal.show()
     },
-    submitRegister () {
+    clearForm () {
+      this.form = {
+        firstname: '',
+        lastname: '',
+        tel: '',
+        email: '',
+        password: ''
+      }
+    },
+    async submitRegister () {
       this.$refs.myModal.hide()
-      this.$store.dispatch('user/register', this.form).then(res => {
-        console.log('resss', res)
+      try {
+        let data = await this.$store.dispatch('user/register', this.form)
+        console.log('resss', data)
         this.$swal({
           icon: 'success',
           text: 'สำเร็จ'
         })
-      }).catch(err => {
+      } catch (err) {
         this.$swal({
           icon: 'success',
           text: 'ผิดพลาด ' + err
         })
-      })
+      }
+      this.clearForm()
     }
   }
 }

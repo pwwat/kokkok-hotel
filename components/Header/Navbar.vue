@@ -81,7 +81,7 @@ export default {
     },
     async logout () {
       try {
-        let { data } = await this.$store.dispatch('user/logout')
+        await this.$store.dispatch('user/logout')
         this.$swal({
           icon: 'success',
           text: 'สำเร็จ'

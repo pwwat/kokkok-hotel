@@ -12,7 +12,8 @@ User.init({
   },
   profile_image_url: {
     type: DataTypes.TEXT,
-    allowNull: false
+    allowNull: true,
+    defaultValue: 'https://i.ibb.co/8N8sBMS/14175.jpg'
   },
   firstname: {
     type: DataTypes.STRING(100),

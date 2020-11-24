@@ -66,7 +66,10 @@ export default {
       src: '~/plugins/localStorage.js',
       ssr: false
     },
-    '~/plugins/axios'
+    {
+      src: '@/plugins/axios.js',
+      ssr: false
+    }
   ],
   /*
   ** Auto import components

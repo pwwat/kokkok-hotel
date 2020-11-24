@@ -2,8 +2,6 @@ import Bcrypt from 'bcrypt'
 import { setUpCookie } from '../middleware/auth'
 import User from '../models/User'
 
-const dayjs = require('dayjs')
-
 module.exports = {
   index: async (req, res) => {
     let response = {
