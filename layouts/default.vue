@@ -9,7 +9,7 @@
 
 </style>
 <script>
-import Header from '~/components/Header/Index'
+import Header from '@/components/Header/Index'
 
 export default {
   components: { Header }

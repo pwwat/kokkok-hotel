@@ -45,10 +45,10 @@ export default {
       this.$refs.myModal.show()
     },
     async submitLogin () {
+      this.$refs.myModal.hide()
       try {
         let result = await this.$store.dispatch('user/login', this.form)
         if (!result.error) {
-          this.$refs.myModal.hide()
           this.$swal({
             icon: 'success',
             text: 'สำเร็จ'
@@ -57,7 +57,6 @@ export default {
           throw new Error(result.message)
         }
       } catch (err) {
-        this.$refs.myModal.hide()
         this.$swal({
           icon: 'error',
           text: 'ผิดพลาด ' + err

@@ -96,7 +96,7 @@ export default {
       this.$refs.myModal.hide()
       try {
         let data = await this.$store.dispatch('user/register', this.form)
-        console.log('resss', data)
+        console.log('result ', data)
         this.$swal({
           icon: 'success',
           text: 'สำเร็จ'

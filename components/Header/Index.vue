@@ -26,18 +26,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import Navbar from '@/components/Header/Navbar'
 
 export default {
   name: 'Header',
   components: {
     Navbar
-  },
-  computed: {
-    ...mapState({
-      user: state => state.user.user
-    })
   }
 }
 </script>
