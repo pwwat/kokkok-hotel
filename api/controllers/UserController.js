@@ -51,9 +51,6 @@ module.exports = {
 
         let payload = { ...user }
 
-        // ลบพาสเวิร์ดออกจาก payload ป้องกันข้อมูลหลุดออกไป
-        delete payload.password
-
         // Assign Token
         let result = setUpCookie(res, null, payload)
         if (result.error) {
@@ -97,8 +94,6 @@ module.exports = {
       }).then(user => {
         return user.get()
       })
-
-      delete user.password
 
       // Assign Token
       let result = setUpCookie(res, null, user)

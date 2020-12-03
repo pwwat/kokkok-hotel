@@ -46,6 +46,7 @@ export default {
     },
     async submitLogin () {
       this.$refs.myModal.hide()
+      this.$store.commit('global/SET_OVER_LAY', true)
       try {
         let result = await this.$store.dispatch('user/login', this.form)
         if (!result.error) {
@@ -62,6 +63,7 @@ export default {
           text: 'ผิดพลาด ' + err
         })
       }
+      this.$store.commit('global/SET_OVER_LAY', false)
     }
   }
 }

@@ -1,6 +1,5 @@
 <template>
   <div style="text-align: center;">
-    <Logo />
     {{ user }}
   </div>
 </template>
@@ -32,7 +31,7 @@ export default {
           alert('ผิดพลาด ' + data.message)
         }
       } catch (err) {
-        console.log('Get user ' + err)
+        console.log('Unauthorized ' + err)
       }
     }
   }

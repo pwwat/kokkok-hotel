@@ -2,6 +2,17 @@
   <div>
     <Header/>
     <Nuxt/>
+    <b-overlay :show="showOverLay" no-wrap>
+      <template #overlay>
+        <div class="d-flex align-items-center">
+          <b-spinner small type="grow" variant="secondary"></b-spinner>
+          <b-spinner type="grow" variant="dark"></b-spinner>
+          <b-spinner small type="grow" variant="secondary"></b-spinner>
+          <!-- We add an SR only text for screen readers -->
+          <span class="sr-only">Please wait...</span>
+        </div>
+      </template>
+    </b-overlay>
   </div>
 </template>
 
@@ -10,9 +21,15 @@
 </style>
 <script>
 import Header from '@/components/Header/Index'
+import { mapState } from 'vuex'
 
 export default {
-  components: { Header }
+  components: { Header },
+  computed: {
+    ...mapState({
+      showOverLay: state => state.global.showOverLay
+    })
+  }
 }
 </script>
 

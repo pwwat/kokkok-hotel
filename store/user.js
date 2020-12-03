@@ -31,7 +31,6 @@ export const actions = {
     }
   },
   async logout ({ commit }, params) {
-    console.log('logouttttt')
     try {
       let { data } = await this.$axios.post('/logout')
       commit('STORE_USER', null)

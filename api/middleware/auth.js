@@ -23,6 +23,7 @@ const authenticateJWT = async (req, res, next) => {
         // หากใช้งานได้อยู่ก็จะทำงานได้ต่อไป แต่ถ้าทำงานไม่ได้ ก็ต้องหลุดออกจากระบบ
         const result = checkRefreshToken(decryptRefreshToken, user)
         if (result.error) {
+          // โยนเข้า Catch
           throw result
         }
       }
@@ -84,9 +85,19 @@ const authenticateJWT = async (req, res, next) => {
   }
 }
 
-const checkRefreshToken = (refreshToken, user) => {
+const checkRefreshToken = (refreshToken, userAccess) => {
   try {
-    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET)
+    let userRefresh = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET)
+
+    // ถ้า ID ไม่ตรงกันแปลว่าผิดปรกติ
+    if ((userRefresh && userAccess) && (userRefresh.id !== userAccess.id)) {
+      let err = {
+        name: 'Unauthorized! ',
+        error: true
+      }
+      throw err
+    }
+
     return {
       name: 'Success',
       error: false
@@ -104,6 +115,7 @@ const reGenerateAccessToken = async (decryptRefreshToken) => {
   try {
     decode = jwt.verify(decryptRefreshToken, process.env.REFRESH_TOKEN_SECRET)
     if (decode) {
+      console.log('passwordd', decode)
       let payload = (await User.findOne({
         where: {
           id: decode.id
@@ -146,10 +158,7 @@ const setUpCookie = (res, accessToken = null, user = null) => {
       // REFRESH TOKEN
       const REFRESH_TOKEN = process.env.REFRESH_TOKEN_SECRET
 
-      const refreshToken = jwt.sign({
-        id: user.id,
-        email: user.email
-      }, REFRESH_TOKEN, {
+      const refreshToken = jwt.sign(user, REFRESH_TOKEN, {
         algorithm: 'HS256',
         expiresIn: process.env.REFRESH_TOKEN_LIFE // refresh token มีอายุ 1 สัปดาห์
       })
