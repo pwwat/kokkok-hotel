@@ -14,16 +14,15 @@
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <b-overlay :show="!isLoaded" rounded="sm">
-
               <template v-if="user">
                 <b-nav-item-dropdown right>
                   <!-- Using 'button-content' slot -->
                   <template #button-content>
-                    {{ user.firstname }}
-                    <b-img :src="user.profile_image_url" width="56" rounded="circle" alt="Circle image"></b-img>
+                    {{ user ? user.firstname : '' }}
+                    <b-img :src="user ? user.profile_image_url : ''" width="56" rounded="circle" alt="Circle image"></b-img>
                   </template>
                   <b-dropdown-item href="#">Profile</b-dropdown-item>
-                  <b-dropdown-item href="#" @click.prevent="logout">Sign Out</b-dropdown-item>
+                  <b-dropdown-item href="#" @click.prevent="logout">Log Out</b-dropdown-item>
                 </b-nav-item-dropdown>
               </template>
               <template v-else>
@@ -35,7 +34,6 @@
                 </b-form>
               </template>
             </b-overlay>
-
           </b-navbar-nav>
         </b-collapse>
       </b-container>

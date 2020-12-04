@@ -24,7 +24,9 @@ import Header from '@/components/Header/Index'
 import { mapState } from 'vuex'
 
 export default {
-  components: { Header },
+  components: {
+    Header
+  },
   computed: {
     ...mapState({
       showOverLay: state => state.global.showOverLay

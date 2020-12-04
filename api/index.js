@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const cookieParser = require('cookie-parser')
 
@@ -23,7 +24,7 @@ const oneHour = 3600000 // 3600000 msec == 1hour
 
 // ทำให้ folder public เป็น static file อ้างอิงและเป็นสาธารณะ และ อ้างอิงผ่าน prefix public ได้เช่นกัน
 // __dirname เรียกจาก root ก่อนเสมอ (เผื่อในกรณี public ย้ายไปอยู่ที่อื่น)
-app.use('/public', express.static(__dirname + '/public', { maxAge: oneHour }))
+app.use('/public', express.static(path.resolve(__dirname, '/public'), { maxAge: oneHour }))
 
 // ปิดการ caching ของระบบกับ browser กับ server เพื่อป้องกันในกรณี 304 if none match
 app.disable('etag')

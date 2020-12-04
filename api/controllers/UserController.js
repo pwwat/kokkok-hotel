@@ -110,7 +110,7 @@ module.exports = {
 
     return res.status(response.code).json(response)
   },
-  logout: async (req, res) => {
+  logout: (req, res) => {
     let response = {
       error: false,
       message: 'Success',
@@ -118,7 +118,7 @@ module.exports = {
     }
 
     try {
-      let result = setUpCookie(res, null, null)
+      let result = setUpCookie(res)
       if (result.error) {
         throw new Error(result.message)
       }

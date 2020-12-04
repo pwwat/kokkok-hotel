@@ -115,7 +115,6 @@ const reGenerateAccessToken = async (decryptRefreshToken) => {
   try {
     decode = jwt.verify(decryptRefreshToken, process.env.REFRESH_TOKEN_SECRET)
     if (decode) {
-      console.log('passwordd', decode)
       let payload = (await User.findOne({
         where: {
           id: decode.id

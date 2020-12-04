@@ -7,7 +7,7 @@
           <b-input-group-prepend is-text>
             <b-icon icon="envelope"></b-icon>
           </b-input-group-prepend>
-          <b-form-input id="email" placeholder="Email" v-model="form.email" required></b-form-input>
+          <b-form-input id="email" v-model="form.email" placeholder="Email" required></b-form-input>
         </b-input-group>
       </b-form-group>
 
@@ -17,8 +17,10 @@
           <b-input-group-prepend is-text>
             <b-icon icon="key"></b-icon>
           </b-input-group-prepend>
-          <b-form-input id="password" type="password" v-model="form.password" placeholder="Password"
-                        required></b-form-input>
+          <b-form-input id="password"
+                        v-model="form.password"
+                        type="password" placeholder="Password" required
+          ></b-form-input>
         </b-input-group>
       </b-form-group>
 
