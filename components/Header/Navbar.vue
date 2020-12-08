@@ -2,13 +2,17 @@
   <section>
     <b-navbar toggleable="lg" type="light" class="bg-transparent">
       <b-container>
-        <b-navbar-brand href="#">NavBar</b-navbar-brand>
+        <b-navbar-brand href="#">
+          <router-link :to="'/'">KOKKOK</router-link>
+        </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="#">Link</b-nav-item>
+            <b-nav-item href="#">ห้องต่างๆ</b-nav-item>
+            <b-nav-item href="#">โปรโมชั่นพิเศษ</b-nav-item>
+            <b-nav-item href="#">เกี่ยวกับเรา</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
@@ -19,9 +23,12 @@
                   <!-- Using 'button-content' slot -->
                   <template #button-content>
                     {{ user ? user.firstname : '' }}
-                    <b-img :src="user ? user.profile_image_url : ''" width="56" rounded="circle" alt="Circle image"></b-img>
+                    <b-img :src="user ? user.profile_image_url : ''" width="56" rounded="circle"
+                           alt="Circle image"></b-img>
                   </template>
-                  <b-dropdown-item href="#">Profile</b-dropdown-item>
+                  <b-dropdown-item href="#">
+                    <router-link :to="{name: 'profile-detail'}">Profile</router-link>
+                  </b-dropdown-item>
                   <b-dropdown-item href="#" @click.prevent="logout">Log Out</b-dropdown-item>
                 </b-nav-item-dropdown>
               </template>
