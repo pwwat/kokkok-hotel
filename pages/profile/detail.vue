@@ -123,6 +123,7 @@ import { mapState } from 'vuex'
 export default {
   layout: 'onlyNavbar',
   name: 'Detail',
+  middleware: 'auth',
   fetchOnServer: true,
   fetch () {
     this.fetchUser()

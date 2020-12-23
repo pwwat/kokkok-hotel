@@ -8,6 +8,8 @@ export default {
     }
   ],
 
+  middleware: ['auth'],
+
   devtool: (env === 'development') ? 'inline-source-map' : false,
   env: {
     baseUrl: process.env.NUXT_URL || 'localhost'
