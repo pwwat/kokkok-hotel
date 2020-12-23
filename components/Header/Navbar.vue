@@ -23,8 +23,7 @@
                   <!-- Using 'button-content' slot -->
                   <template #button-content>
                     {{ user ? user.firstname : '' }}
-                    <b-img :src="user ? user.profile_image_url : ''" width="56" rounded="circle"
-                           alt="Circle image"></b-img>
+                    <b-avatar :src="user ? user.profile_image_url : ''" size="56"></b-avatar>
                   </template>
                   <b-dropdown-item href="#">
                     <router-link :to="{name: 'profile-detail'}">Profile</router-link>

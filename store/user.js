@@ -6,8 +6,19 @@ export const actions = {
   index ({ commit }, params) {
     return this.$axios.get('/users').then(res => {
       if (!res.data.error) {
+        console.log('get users', res)
       }
     })
+  },
+  async me ({ commit }, userId) {
+    try {
+      let { data } = await this.$axios.get('/user/' + userId)
+      commit('STORE_USER', data.user)
+      return Promise.resolve(data.user)
+    } catch (err) {
+      let { response: { data } } = err
+      return Promise.reject(data.message)
+    }
   },
   register ({ commit }, params) {
     return this.$axios.post('/register', params)

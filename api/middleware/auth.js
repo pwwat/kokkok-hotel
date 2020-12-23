@@ -85,6 +85,27 @@ const authenticateJWT = async (req, res, next) => {
   }
 }
 
+const getIdentifier = (req) => {
+  let response = {
+    error: false,
+    message: 'Success',
+    user: null
+  }
+
+  const accessToken = req.cookies.token
+  const token = accessToken ? crypt.decryptWithAES(accessToken) : null
+  let user = null
+  try {
+    user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    response.user = user
+  } catch (err) {
+    response.error = true
+    response.message = err.message
+  }
+
+  return response
+}
+
 const checkRefreshToken = (refreshToken, userAccess) => {
   try {
     let userRefresh = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET)
@@ -100,6 +121,7 @@ const checkRefreshToken = (refreshToken, userAccess) => {
 
     return {
       name: 'Success',
+      user: userRefresh,
       error: false
     }
   } catch (err) {
@@ -201,5 +223,6 @@ const setUpCookie = (res, accessToken = null, user = null) => {
 
 export {
   authenticateJWT,
-  setUpCookie
+  setUpCookie,
+  getIdentifier
 }

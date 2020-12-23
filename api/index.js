@@ -24,7 +24,7 @@ const oneHour = 3600000 // 3600000 msec == 1hour
 
 // ทำให้ folder public เป็น static file อ้างอิงและเป็นสาธารณะ และ อ้างอิงผ่าน prefix public ได้เช่นกัน
 // __dirname เรียกจาก root ก่อนเสมอ (เผื่อในกรณี public ย้ายไปอยู่ที่อื่น)
-app.use('/public', express.static(path.resolve(__dirname, '/public'), { maxAge: oneHour }))
+app.use('/public', express.static(__dirname + '/public', { maxAge: oneHour }))
 
 // ปิดการ caching ของระบบกับ browser กับ server เพื่อป้องกันในกรณี 304 if none match
 app.disable('etag')
@@ -34,6 +34,15 @@ const router = require('./routes/index')
 
 // Use API Routes
 app.use(router)
+
+app.use((err, req, res, next) => {
+  let response = {}
+  if (err.code === 'INCORRECT_FILETYPE') {
+    response.error = true
+    response.message = 'Only image allowed!'
+    return res.status(422).json(response)
+  }
+})
 
 // Export the server middleware
 const application = {

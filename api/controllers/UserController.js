@@ -1,5 +1,7 @@
+import path from 'path'
 import Bcrypt from 'bcrypt'
-import { setUpCookie } from '../middleware/auth'
+import axios from 'axios'
+import { setUpCookie, getIdentifier } from '../middleware/auth'
 import User from '../models/User'
 
 module.exports = {
@@ -20,6 +22,25 @@ module.exports = {
       response.code = 400
     }
 
+    return res.status(response.code).json(response)
+  },
+  show: async (req, res) => {
+    let response = {
+      user: null,
+      error: false,
+      message: 'Success',
+      code: 200
+    }
+
+    const userId = req.params.id
+
+    try {
+      response.user = await User.findByPk(userId)
+    } catch (err) {
+      response.error = true
+      response.message = err.message
+      response.code = 400
+    }
     return res.status(response.code).json(response)
   },
   login: async (req, res) => {
@@ -128,5 +149,67 @@ module.exports = {
       response.code = 400
     }
     return res.status(response.code).json(response)
+  },
+  update: async (req, res) => {
+    let response = {
+      error: false,
+      message: 'Success',
+      code: 200
+    }
+
+    const userId = req.params.id
+    const params = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      tel: req.body.tel,
+      email: req.body.email
+    }
+
+    try {
+      let user = await User.update(params, {
+        where: {
+          id: userId
+        }
+      })
+
+      response.user = user
+    } catch (err) {
+      response.error = true
+      response.message = err.message
+    }
+
+    return res.status(200).json(response)
+  },
+  uploadImage: (req, res) => {
+    let response = {
+      error: false,
+      message: 'Success',
+      code: 200
+    }
+
+    const file = req.file
+
+    let url = require('url')
+    let host = url.format({
+      protocol: req.protocol,
+      host: req.get('host')
+    })
+
+    response.url = host + '/' + file.destination + '/' + file.filename
+
+    try {
+      User.update({
+        profile_image_url: response.url
+      }, {
+        where: {
+          id: req.params.id
+        }
+      })
+    } catch (err) {
+      response.error = true
+      response.message = err.message
+    }
+
+    return res.status(200).json(response)
   }
 }

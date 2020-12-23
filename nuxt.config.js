@@ -109,6 +109,12 @@ export default {
     credentials: true,
     proxyHeaders: false
   },
+
+  proxy: {
+    '/api': process.env.SERVER_URL || 'http://localhost:3000', // -- ตั้งค่า map proxy url api server
+    ws: true
+  },
+
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/

@@ -28,7 +28,7 @@ export default {
         if (!data.error) {
           this.users = data.users
         } else {
-          alert('ผิดพลาด ' + data.message)
+          console.error('ผิดพลาด ' + data.message)
         }
       } catch (err) {
         console.log('Unauthorized ' + err)
