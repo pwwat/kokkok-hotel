@@ -1,47 +1,54 @@
 <template>
   <section>
-        <b-navbar toggleable="lg" type="light" class="bg-transparent">
+    <b-navbar toggleable="lg" type="light" class="bg-transparent">
       <b-container>
         <b-navbar-brand href="#">
           <router-link :to="'/'">KOKKOK</router-link>
         </b-navbar-brand>
 
-<!--        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>-->
+        <template v-if="isLoaded">
+          <h4>yoyoyo</h4>
+        </template>
+        <template v-else>
+          <h4>hehehe</h4>
+        </template>
 
-<!--        <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
-            <b-nav-item href="#">ห้องต่างๆ</b-nav-item>
-            <b-nav-item href="#">โปรโมชั่นพิเศษ</b-nav-item>
-            <b-nav-item href="#">เกี่ยวกับเรา</b-nav-item>
-          </b-navbar-nav>
+        <!--        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>-->
 
-          &lt;!&ndash;     Right aligned nav items &ndash;&gt;
-           <b-navbar-nav class="ml-auto">
-             <b-overlay :show="!isLoaded" rounded="sm">
-               <template v-if="user !== null">
-                 <b-nav-item-dropdown right>
-                   &lt;!&ndash; Using 'button-content' slot &ndash;&gt;
-                   <template #button-content>
-                     {{ user ? user.firstname : '' }}
-                     <b-avatar :src="user ? user.profile_image_url : ''" size="56"></b-avatar>
-                   </template>
-                   <b-dropdown-item href="#">
-                     <router-link :to="{name: 'profile-detail'}">Profile</router-link>
-                   </b-dropdown-item>
-                   <b-dropdown-item href="#" @click.prevent="logout">Log Out</b-dropdown-item>
-                 </b-nav-item-dropdown>
-               </template>
-               <template v-else>
-                 <b-form>
-                   <b-button variant="outline-primary" class="mr-3 login-button" @click.prevent="openModalLogin">
-                     Login
-                   </b-button>
-                   <b-button variant="primary" @click.prevent="openModalRegister">Sign Up</b-button>
-                 </b-form>
-               </template>
-             </b-overlay>
-           </b-navbar-nav>
-         </b-collapse>-->
+        <!--        <b-collapse id="nav-collapse" is-nav>
+                  <b-navbar-nav>
+                    <b-nav-item href="#">ห้องต่างๆ</b-nav-item>
+                    <b-nav-item href="#">โปรโมชั่นพิเศษ</b-nav-item>
+                    <b-nav-item href="#">เกี่ยวกับเรา</b-nav-item>
+                  </b-navbar-nav>
+
+                  &lt;!&ndash;     Right aligned nav items &ndash;&gt;
+                   <b-navbar-nav class="ml-auto">
+                     <b-overlay :show="!isLoaded" rounded="sm">
+                       <template v-if="user !== null">
+                         <b-nav-item-dropdown right>
+                           &lt;!&ndash; Using 'button-content' slot &ndash;&gt;
+                           <template #button-content>
+                             {{ user ? user.firstname : '' }}
+                             <b-avatar :src="user ? user.profile_image_url : ''" size="56"></b-avatar>
+                           </template>
+                           <b-dropdown-item href="#">
+                             <router-link :to="{name: 'profile-detail'}">Profile</router-link>
+                           </b-dropdown-item>
+                           <b-dropdown-item href="#" @click.prevent="logout">Log Out</b-dropdown-item>
+                         </b-nav-item-dropdown>
+                       </template>
+                       <template v-else>
+                         <b-form>
+                           <b-button variant="outline-primary" class="mr-3 login-button" @click.prevent="openModalLogin">
+                             Login
+                           </b-button>
+                           <b-button variant="primary" @click.prevent="openModalRegister">Sign Up</b-button>
+                         </b-form>
+                       </template>
+                     </b-overlay>
+                   </b-navbar-nav>
+                 </b-collapse>-->
       </b-container>
     </b-navbar>
 
