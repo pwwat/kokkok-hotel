@@ -1,22 +1,35 @@
 <template>
   <section>
-    <b-navbar toggleable="lg" type="light" class="bg-transparent">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li v-if="isLoaded" class="nav-item">
+            <a class="nav-link" href="#">Link 22</a>
+          </li>
+          <li v-else class="nav-item">
+            <a class="nav-link" href="#">Link 33</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--    <b-navbar toggleable="lg" type="light" class="bg-transparent">
       <b-container>
         <b-navbar-brand href="#">
           <router-link :to="'/'">KOKKOK</router-link>
         </b-navbar-brand>
+        &lt;!&ndash;        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>&ndash;&gt;
 
-
-        <!--        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>-->
-
-        <!--        <b-collapse id="nav-collapse" is-nav>
-                  <b-navbar-nav>
-                    <b-nav-item href="#">ห้องต่างๆ</b-nav-item>
-                    <b-nav-item href="#">โปรโมชั่นพิเศษ</b-nav-item>
-                    <b-nav-item href="#">เกี่ยวกับเรา</b-nav-item>
-                  </b-navbar-nav>
-
-                  &lt;!&ndash;     Right aligned nav items &ndash;&gt;
+        &lt;!&ndash;
                    <b-navbar-nav class="ml-auto">
                      <b-overlay :show="!isLoaded" rounded="sm">
                        <template v-if="user !== null">
@@ -42,9 +55,9 @@
                        </template>
                      </b-overlay>
                    </b-navbar-nav>
-                 </b-collapse>-->
+                 </b-collapse>&ndash;&gt;
       </b-container>
-    </b-navbar>
+    </b-navbar>-->
 
     <modal-login ref="modalLogin"></modal-login>
     <modal-register ref="modalRegister"></modal-register>
@@ -71,6 +84,9 @@ export default {
     ...mapState({
       user: state => state.user.user
     })
+  },
+  mounted () {
+    this.isLoaded = true
   },
   methods: {
     openModalLogin () {
