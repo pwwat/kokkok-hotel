@@ -72,9 +72,8 @@ export default {
     })
   },
   mounted () {
-    this.$nextTick(() => {
-      this.isLoaded = true
-    })
+    this.isLoaded = true
+    console.log('Loggg Mouted', this.isLoaded)
   },
   methods: {
     openModalLogin () {
