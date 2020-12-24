@@ -62,11 +62,11 @@ export default {
   plugins: [
     {
       src: '~/plugins/localStorage.js',
-      ssr: false
+      mode: 'client'
     },
     {
       src: '@/plugins/axios.js',
-      ssr: false
+      mode: 'client'
     }
   ],
   /*
