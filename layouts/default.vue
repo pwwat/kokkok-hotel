@@ -1,19 +1,19 @@
 <template>
   <div>
     <!--    <Header/>-->
-    <Nuxt />
+    <Nuxt/>
     asdasdasd
-<!--    <b-overlay :show="showOverLay" no-wrap>
+    <b-overlay :show="showOverLay" no-wrap>
       <template #overlay>
         <div class="d-flex align-items-center">
           <b-spinner small type="grow" variant="secondary"></b-spinner>
           <b-spinner type="grow" variant="dark"></b-spinner>
           <b-spinner small type="grow" variant="secondary"></b-spinner>
-          &lt;!&ndash; We add an SR only text for screen readers &ndash;&gt;
+          <!-- We add an SR only text for screen readers -->
           <span class="sr-only">Please wait...</span>
         </div>
       </template>
-    </b-overlay>-->
+    </b-overlay>
   </div>
 </template>
 
