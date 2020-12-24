@@ -1,18 +1,19 @@
 <template>
   <div>
-    <Header/>
-    <Nuxt/>
-    <b-overlay :show="showOverLay" no-wrap>
+    <!--    <Header/>-->
+    <Nuxt />
+    asdasdasd
+<!--    <b-overlay :show="showOverLay" no-wrap>
       <template #overlay>
         <div class="d-flex align-items-center">
           <b-spinner small type="grow" variant="secondary"></b-spinner>
           <b-spinner type="grow" variant="dark"></b-spinner>
           <b-spinner small type="grow" variant="secondary"></b-spinner>
-          <!-- We add an SR only text for screen readers -->
+          &lt;!&ndash; We add an SR only text for screen readers &ndash;&gt;
           <span class="sr-only">Please wait...</span>
         </div>
       </template>
-    </b-overlay>
+    </b-overlay>-->
   </div>
 </template>
 
@@ -25,7 +26,7 @@ import { mapState } from 'vuex'
 
 export default {
   components: {
-    Header
+    // Header
   },
   computed: {
     ...mapState({
