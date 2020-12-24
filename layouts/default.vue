@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!--    <Header/>-->
+    <Header/>
     <Nuxt/>
     asdasdasd
     <b-overlay :show="showOverLay" no-wrap>
@@ -26,7 +26,7 @@ import { mapState } from 'vuex'
 
 export default {
   components: {
-    // Header
+    Header
   },
   computed: {
     ...mapState({
