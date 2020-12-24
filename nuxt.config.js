@@ -65,7 +65,7 @@ export default {
       mode: 'client'
     },
     {
-      src: '@/plugins/axios.js',
+      src: '~/plugins/axios.js',
       mode: 'client'
     }
   ],

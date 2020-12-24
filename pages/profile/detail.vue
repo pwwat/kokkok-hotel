@@ -3,7 +3,7 @@
     <section>
       <div class="row">
         <div class="col-12">
-          <b-jumbotron :fluid="true" class="custom-jumbotron">
+          <!--          <b-jumbotron :fluid="true" class="custom-jumbotron">
             <b-overlay
               :show="overlay"
               spinner-variant="primary"
@@ -108,7 +108,7 @@
                 </div>
               </div>
             </b-overlay>
-          </b-jumbotron>
+          </b-jumbotron>-->
         </div>
 
         {{ user }}
