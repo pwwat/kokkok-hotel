@@ -6,12 +6,12 @@
           <router-link :to="'/'">KOKKOK</router-link>
         </b-navbar-brand>
 
-        <template v-if="isLoaded">
+        <div v-if="isLoaded">
           <h4>yoyoyo</h4>
-        </template>
-        <template v-else>
+        </div>
+        <div v-else>
           <h4>hehehe</h4>
-        </template>
+        </div>
 
         <!--        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>-->
 
@@ -80,7 +80,7 @@ export default {
   },
   mounted () {
     this.isLoaded = true
-    console.log('Loggg Mouted', this.isLoaded)
+    console.log('Loggg Mounted', this.isLoaded)
   },
   methods: {
     openModalLogin () {
