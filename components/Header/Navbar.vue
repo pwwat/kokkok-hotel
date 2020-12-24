@@ -1,12 +1,12 @@
 <template>
   <section>
-    <!--    <b-navbar toggleable="lg" type="light" class="bg-transparent">
+        <b-navbar toggleable="lg" type="light" class="bg-transparent">
       <b-container>
         <b-navbar-brand href="#">
           <router-link :to="'/'">KOKKOK</router-link>
         </b-navbar-brand>
 
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+<!--        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
@@ -41,9 +41,9 @@
               </template>
             </b-overlay>
           </b-navbar-nav>
-        </b-collapse>
+        </b-collapse>-->
       </b-container>
-    </b-navbar>-->
+    </b-navbar>
 
     <modal-login ref="modalLogin"></modal-login>
     <modal-register ref="modalRegister"></modal-register>
