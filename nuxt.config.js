@@ -118,7 +118,9 @@ export default {
   */
   build: {
     html: {
-      minify: { collapseWhitespace: true }
+      minify: {
+        collapseWhitespace: true
+      }
     }
   }
 }

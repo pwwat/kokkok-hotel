@@ -18,27 +18,29 @@
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <b-overlay :show="!isLoaded" rounded="sm">
-              <template v-if="user">
-                <b-nav-item-dropdown right>
-                  <!-- Using 'button-content' slot -->
-                  <template #button-content>
-                    {{ user ? user.firstname : '' }}
-                    <b-avatar :src="user ? user.profile_image_url : ''" size="56"></b-avatar>
-                  </template>
-                  <b-dropdown-item href="#">
-                    <router-link :to="{name: 'profile-detail'}">Profile</router-link>
-                  </b-dropdown-item>
-                  <b-dropdown-item href="#" @click.prevent="logout">Log Out</b-dropdown-item>
-                </b-nav-item-dropdown>
-              </template>
-              <template v-else>
-                <b-form>
-                  <b-button variant="outline-primary" class="mr-3 login-button" @click.prevent="openModalLogin">
-                    Login
-                  </b-button>
-                  <b-button variant="primary" @click.prevent="openModalRegister">Sign Up</b-button>
-                </b-form>
-              </template>
+              <client-only>
+                <template v-if="user">
+                  <b-nav-item-dropdown right>
+                    <!-- Using 'button-content' slot -->
+                    <template #button-content>
+                      {{ user ? user.firstname : '' }}
+                      <b-avatar :src="user ? user.profile_image_url : ''" size="56"></b-avatar>
+                    </template>
+                    <b-dropdown-item href="#">
+                      <router-link :to="{name: 'profile-detail'}">Profile</router-link>
+                    </b-dropdown-item>
+                    <b-dropdown-item href="#" @click.prevent="logout">Log Out</b-dropdown-item>
+                  </b-nav-item-dropdown>
+                </template>
+                <template v-else>
+                  <b-form>
+                    <b-button variant="outline-primary" class="mr-3 login-button" @click.prevent="openModalLogin">
+                      Login
+                    </b-button>
+                    <b-button variant="primary" @click.prevent="openModalRegister">Sign Up</b-button>
+                  </b-form>
+                </template>
+              </client-only>
             </b-overlay>
           </b-navbar-nav>
         </b-collapse>
