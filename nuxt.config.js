@@ -18,7 +18,7 @@ export default {
     host: process.env.NUXT_HOST || 'localhost' // default: localhost
   },
 
-  ssr: true, // Turn On Server-Side Rendering
+  ssr: false, // Turn On Server-Side Rendering
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
