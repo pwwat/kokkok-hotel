@@ -1,6 +1,6 @@
 <template>
   <section>
-    <b-navbar toggleable="lg" type="light" class="bg-transparent">
+    <!--    <b-navbar toggleable="lg" type="light" class="bg-transparent">
       <b-container>
         <b-navbar-brand href="#">
           <router-link :to="'/'">KOKKOK</router-link>
@@ -15,15 +15,9 @@
             <b-nav-item href="#">เกี่ยวกับเรา</b-nav-item>
           </b-navbar-nav>
 
-          <!-- Right aligned nav items -->
+          &lt;!&ndash; Right aligned nav items &ndash;&gt;
           <b-navbar-nav class="ml-auto">
-<!--            <template v-if="!isLoaded">
-              <h5>yoyoyo</h5>
-            </template>
-            <template v-else>
-              <h5>fifififi</h5>
-            </template>-->
-<!--            <b-overlay :show="!isLoaded" rounded="sm">
+            <b-overlay :show="!isLoaded" rounded="sm">
               <template v-if="user !== null">
                 <b-nav-item-dropdown right>
                   &lt;!&ndash; Using 'button-content' slot &ndash;&gt;
@@ -45,11 +39,11 @@
                   <b-button variant="primary" @click.prevent="openModalRegister">Sign Up</b-button>
                 </b-form>
               </template>
-            </b-overlay>-->
+            </b-overlay>
           </b-navbar-nav>
         </b-collapse>
       </b-container>
-    </b-navbar>
+    </b-navbar>-->
 
     <modal-login ref="modalLogin"></modal-login>
     <modal-register ref="modalRegister"></modal-register>
