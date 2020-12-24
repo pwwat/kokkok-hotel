@@ -31,7 +31,7 @@ export default {
           console.error('ผิดพลาด ' + data.message)
         }
       } catch (err) {
-        console.log('Unauthorized ' + err)
+        console.log('Unauthorized GetUsers ' + err.message)
       }
     }
   }
