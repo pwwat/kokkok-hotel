@@ -78,9 +78,11 @@ export default {
       user: state => state.user.user
     })
   },
-  mounted () {
-    this.isLoaded = true
-    console.log('Loggg Mounted', this.isLoaded)
+  created () {
+    this.$nextTick(() => {
+      console.log('yoyoyoy')
+      this.isLoaded = true
+    })
   },
   methods: {
     openModalLogin () {
