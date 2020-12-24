@@ -18,13 +18,16 @@ export default {
   data () {
     return {
       users: [],
-      isLoaded: true
+      isLoaded: false
     }
   },
   computed: {
     ...mapState({
       user: state => state.user.user
     })
+  },
+  mounted () {
+    this.isLoaded = true
   },
   created () {
     this.getUsers()
