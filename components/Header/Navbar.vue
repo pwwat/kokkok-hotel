@@ -17,8 +17,14 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-overlay :show="!isLoaded" rounded="sm">
-<!--              <template v-if="user !== null">
+            <template v-if="!isLoaded">
+              <h5>yoyoyo</h5>
+            </template>
+            <template v-else>
+              <h5>fifififi</h5>
+            </template>
+<!--            <b-overlay :show="!isLoaded" rounded="sm">
+              <template v-if="user !== null">
                 <b-nav-item-dropdown right>
                   &lt;!&ndash; Using 'button-content' slot &ndash;&gt;
                   <template #button-content>
@@ -38,8 +44,8 @@
                   </b-button>
                   <b-button variant="primary" @click.prevent="openModalRegister">Sign Up</b-button>
                 </b-form>
-              </template>-->
-            </b-overlay>
+              </template>
+            </b-overlay>-->
           </b-navbar-nav>
         </b-collapse>
       </b-container>
