@@ -17,12 +17,12 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <template v-if="!isLoaded">
+<!--            <template v-if="!isLoaded">
               <h5>yoyoyo</h5>
             </template>
             <template v-else>
               <h5>fifififi</h5>
-            </template>
+            </template>-->
 <!--            <b-overlay :show="!isLoaded" rounded="sm">
               <template v-if="user !== null">
                 <b-nav-item-dropdown right>
