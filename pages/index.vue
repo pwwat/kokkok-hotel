@@ -1,6 +1,13 @@
 <template>
   <div style="text-align: center;">
     {{ user }}
+
+    <div v-if="isLoaded">
+      <h4>yoyoyo</h4>
+    </div>
+    <div v-else>
+      <h4>hehehe</h4>
+    </div>
   </div>
 </template>
 
@@ -10,7 +17,8 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      users: []
+      users: [],
+      isLoaded: true
     }
   },
   computed: {

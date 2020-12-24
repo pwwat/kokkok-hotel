@@ -6,12 +6,6 @@
           <router-link :to="'/'">KOKKOK</router-link>
         </b-navbar-brand>
 
-        <div v-if="isLoaded">
-          <h4>yoyoyo</h4>
-        </div>
-        <div v-else>
-          <h4>hehehe</h4>
-        </div>
 
         <!--        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>-->
 
