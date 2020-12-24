@@ -1,6 +1,13 @@
 <template>
   <section>
     <Navbar></Navbar>
+
+    <div v-if="isLoaded">
+      <h4>yoyoyo</h4>
+    </div>
+    <div v-else>
+      <h4>hehehe</h4>
+    </div>
     <div class="row">
       <div class="col-12">
         <b-jumbotron :fluid="true" class="custom-jumbotron">
@@ -32,6 +39,14 @@ export default {
   name: 'Header',
   components: {
     Navbar
+  },
+  data () {
+    return {
+      isLoaded: false
+    }
+  },
+  mounted () {
+    this.isLoaded = true
   }
 }
 </script>
