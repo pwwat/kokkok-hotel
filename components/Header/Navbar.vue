@@ -78,12 +78,6 @@ export default {
       user: state => state.user.user
     })
   },
-  created () {
-    this.$nextTick(() => {
-      console.log('yoyoyoy')
-      this.isLoaded = true
-    })
-  },
   methods: {
     openModalLogin () {
       this.$refs.modalLogin.openModal()
