@@ -3,7 +3,7 @@
     <Navbar></Navbar>
     <div class="row">
       <div class="col-12">
-        <b-jumbotron :fluid="true" class="custom-jumbotron">
+<!--        <b-jumbotron :fluid="true" class="custom-jumbotron">
           <template #header>KOK-KOK HOTEL</template>
 
           <template #lead>
@@ -19,7 +19,7 @@
           </p>
 
           <b-button variant="primary" href="#">Do Something</b-button>
-        </b-jumbotron>
+        </b-jumbotron>-->
       </div>
     </div>
   </section>
