@@ -18,7 +18,7 @@
             </ul>
             <template v-if="user">
               <div class="d-flex">
-                <div class="dropdown" style="padding: 0px 1rem;">
+                <div class="dropdown">
                   <a id="dropdownMenuLink" class="dropdown-toggle" href="#"
                      role="button" data-bs-toggle="dropdown"
                      aria-expanded="false"
@@ -35,7 +35,7 @@
                             <img :src="user.profile_image_url" alt="" style="width: 90px;height: 90px;">
                           </div>
                         </div>
-                        <div class="d-inline-flex flex-wrap flex-column" style="padding-left: 10px;font-weight: 500;">
+                        <div class="d-inline-flex flex-wrap flex-column user-detail" style="font-weight: 500;">
 
                           <div>{{ user.firstname }}</div>
                           <div>{{ user.lastname }}</div>
@@ -49,7 +49,9 @@
                     <a class="dropdown-item" href="#"><i class="far fa-calendar-alt"></i> My Reservations</a>
                     <a class="dropdown-item" href="#"><i class="far fa-bell"></i> Notifications</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                    <a class="dropdown-item" href="#" @click.prevent="logout">
+                      <i class="fas fa-sign-out-alt"></i> Log out
+                    </a>
                   </div>
                 </div>
               </div>
@@ -67,42 +69,6 @@
           </div>
         </div>
       </nav>
-      <!--    <b-navbar toggleable="lg" type="light" class="bg-transparent">
-        <b-container>
-          <b-navbar-brand href="#">
-            <router-link :to="'/'">KOKKOK</router-link>
-          </b-navbar-brand>
-          &lt;!&ndash;        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>&ndash;&gt;
-
-          &lt;!&ndash;
-                     <b-navbar-nav class="ml-auto">
-                       <b-overlay :show="!isLoaded" rounded="sm">
-                         <template v-if="user !== null">
-                           <b-nav-item-dropdown right>
-                             &lt;!&ndash; Using 'button-content' slot &ndash;&gt;
-                             <template #button-content>
-                               {{ user ? user.firstname : '' }}
-                               <b-avatar :src="user ? user.profile_image_url : ''" size="56"></b-avatar>
-                             </template>
-                             <b-dropdown-item href="#">
-                               <router-link :to="{name: 'profile-detail'}">Profile</router-link>
-                             </b-dropdown-item>
-                             <b-dropdown-item href="#" @click.prevent="logout">Log Out</b-dropdown-item>
-                           </b-nav-item-dropdown>
-                         </template>
-                         <template v-else>
-                           <b-form>
-                             <b-button variant="outline-primary" class="mr-3 login-button" @click.prevent="openModalLogin">
-                               Login
-                             </b-button>
-                             <b-button variant="primary" @click.prevent="openModalRegister">Sign Up</b-button>
-                           </b-form>
-                         </template>
-                       </b-overlay>
-                     </b-navbar-nav>
-                   </b-collapse>&ndash;&gt;
-        </b-container>
-      </b-navbar>-->
     </client-only>
     <modal-login ref="modalLogin"></modal-login>
     <modal-register ref="modalRegister"></modal-register>
@@ -165,7 +131,9 @@ export default {
 @import '~bootstrap/scss/mixins/_breakpoints.scss';
 
 @include media-breakpoint-up(md) {
-
+  .user-detail {
+    padding-left: 10px;
+  }
 }
 
 .dropdown:hover > .dropdown-menu {

@@ -1,4 +1,4 @@
-div.jumbotron.jumbotron-fluid, .custom-jumbotron {
+div.custom-jumbotron {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4),
     rgba(0, 0, 0, 0.4)), url('../../static/images/header_cover.jpg');
   background-attachment: fixed;
@@ -6,4 +6,5 @@ div.jumbotron.jumbotron-fluid, .custom-jumbotron {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 480px;
+  padding: 2rem 0;
 }
