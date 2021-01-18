@@ -1,6 +1,8 @@
 const path = require('path')
 const express = require('express')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
+
 
 const dayjs = require('dayjs')
 const utc = require('dayjs/plugin/utc')
@@ -14,6 +16,7 @@ dayjs.tz.setDefault('Asia/Bangkok')
 // Create express instnace
 const app = express()
 
+app.use(cors())
 // แปลงรูปแบบข้อมูลจาก request ที่ส่งมาให้อยู่ในรูปแบบ json
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

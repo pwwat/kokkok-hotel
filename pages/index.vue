@@ -1,6 +1,7 @@
 <template>
   <div style="text-align: center;">
-    {{ user }}
+    {{ user }} <br>
+    Usersssa: {{ users }}
   </div>
 </template>
 
@@ -24,8 +25,9 @@ export default {
   methods: {
     async getUsers () {
       try {
-        let data = await this.$axios.get('/users')
+        let data = await this.$axios.$get('/users')
         if (!data.error) {
+          console.log('userrrr', data)
           this.users = data.users
         } else {
           console.error('ผิดพลาด ' + data.message)

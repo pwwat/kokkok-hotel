@@ -14,8 +14,7 @@ module.exports = {
     }
 
     try {
-      let users = await User.findAll()
-      response.users = users
+      response.users = await User.findAll()
     } catch (err) {
       response.error = true
       response.message = err.message
