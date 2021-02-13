@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar></Navbar>
-    <Nuxt/>
+    <Nuxt />
   </div>
 </template>
 
@@ -15,7 +15,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -1,7 +1,7 @@
 <template>
   <section>
     <client-only placeholder="Loading...">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
         <div class="container">
           <router-link class="navbar-brand" :to="'/'">KOKKOK</router-link>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -31,8 +31,8 @@
                     <a class="dropdown-item p-3" href="#">
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="d-inline-flex">
-                          <div class="image-cropper dropdown">
-                            <img :src="user.profile_image_url" alt="" style="width: 90px;height: 90px;">
+                          <div class="image-cropper dropdown mx-auto" style="height: 3rem; width: 3rem;">
+                            <img :src="user.profile_image_url" class="rounded-circle avatar">
                           </div>
                         </div>
                         <div class="d-inline-flex flex-wrap flex-column user-detail" style="font-weight: 500;">
@@ -48,6 +48,9 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#"><i class="far fa-calendar-alt"></i> My Reservations</a>
                     <a class="dropdown-item" href="#"><i class="far fa-bell"></i> Notifications</a>
+                    <router-link class="dropdown-item" to="/profile/edit"><i class="far fa-address-card"></i> Edit
+                      Profile
+                    </router-link>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" @click.prevent="logout">
                       <i class="fas fa-sign-out-alt"></i> Log out
@@ -58,12 +61,9 @@
             </template>
             <template v-else>
               <div class="d-flex">
-                <button class="btn btn-primary" style="margin-right: 15px;" @click.prevent="openModalLogin">
-                  Log in
+                <button class="btn btn-yellow" style="margin-right: 15px;" @click.prevent="openModalLogin">
+                  Log in / Sign Up
                 </button>
-              </div>
-              <div class="d-flex">
-                <button class="btn btn-outline-success" @click.prevent="openModalRegister">Sign Up</button>
               </div>
             </template>
           </div>
@@ -108,6 +108,7 @@ export default {
     },
     async logout () {
       try {
+        this.$router.replace('/')
         await this.$store.dispatch('user/logout')
         this.$swal({
           icon: 'success',
@@ -136,6 +137,10 @@ export default {
   }
 }
 
+nav.navbar {
+  z-index: 5;
+}
+
 .dropdown:hover > .dropdown-menu {
   display: block;
 }
@@ -154,20 +159,5 @@ export default {
 
 button.login-button:hover {
   background: none;
-}
-
-.image-cropper {
-  width: 56px;
-  height: 56px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 50%;
-
-  img {
-    display: inline;
-    margin: 0 auto;
-    height: auto;
-    width: 100%;
-  }
 }
 </style>

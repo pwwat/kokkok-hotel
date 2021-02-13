@@ -26,6 +26,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "fibers": "^5.0.0",
+    "flatpickr": "^4.6.9",
     "gulp": "^4.0.2",
     "gulp-html-minifier": "^0.1.8",
     "jsonwebtoken": "^8.5.1",
