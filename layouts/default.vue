@@ -1,7 +1,16 @@
 <template>
   <div>
-    <Header />
-    <Nuxt />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2 col-md-1 g-0">
+          <side-nav-bar></side-nav-bar>
+        </div>
+        <div class="col-10 col-md-11 g-0">
+          <Header />
+          <Nuxt />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -10,11 +19,13 @@
 </style>
 <script>
 import Header from '@/components/Header/Index'
+import SideNavBar from '@/components/SideNavbar/Index'
 import { mapState } from 'vuex'
 
 export default {
   components: {
-    Header
+    Header,
+    SideNavBar
   },
   computed: {
     ...mapState({

@@ -57,13 +57,12 @@
       div.box-date > div {
         background: white;
         width: 256px;
-        padding: 15px;
+        padding: 15px 5px;
         position: relative;
         font-family: 'Playfair Display SC', serif;
 
         img {
           float: left;
-          margin-right: 10px;
           font-size: 3rem;
           width: 3rem;
           filter: invert(44%) sepia(9%) saturate(2867%) hue-rotate(358deg) brightness(101%) contrast(85%);
@@ -71,13 +70,16 @@
 
         input {
           float: left;
-          width: 10rem;
+          width: 80%;
+          position: relative;
+          z-index: 1;
           height: 3rem;
           box-shadow: none;
           border: none;
           background: transparent;
           padding: 0;
           color: transparent;
+          cursor: pointer;
         }
 
         div.text-date {
@@ -91,15 +93,19 @@
           margin-left: 10px;
 
           span.date-number {
-            font-size: 4rem;
+            font-size: 3rem;
             float: left;
-            margin-left: 1rem;
           }
 
-          span.date-month {
+          div.date-month-year {
+            display: inline;
             color: #999;
             margin-left: 10px;
             line-height: 3.5rem;
+
+            span.placeholder-date {
+              margin-left: 1rem;
+            }
           }
         }
 
