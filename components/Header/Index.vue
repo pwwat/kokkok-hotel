@@ -51,11 +51,10 @@
               </div>
             </div>
           </div>
-          <div
-            class="col-auto g-0 g-sm-2 col-md-auto mt-3 mt-md-0 search-button d-grid d-md-flex align-items-sm-stretch"
-          >
+          <div class="col-auto g-0 g-sm-2 col-md-auto mt-3 mt-md-0
+            search-button d-grid d-md-flex align-items-sm-stretch">
             <button class="btn btn-yellow">
-              <i class="fas fa-search fa-3x"></i>
+              <img src="/images/header/search.svg" alt="">
             </button>
           </div>
         </div>
@@ -66,7 +65,6 @@
 
 <script>
 import flatpickr from 'flatpickr'
-import rangePlugin from 'flatpickr/dist/plugins/rangePlugin'
 import dayjs from 'dayjs'
 import Navbar from '@/components/Header/Navbar'
 

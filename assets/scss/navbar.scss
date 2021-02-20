@@ -1,10 +1,80 @@
+$hamburger-padding-x: 15px;
+$hamburger-padding-y: 15px;
+$hamburger-layer-spacing: 5px;
+$hamburger-layer-height: 3px;
+
+@import "~hamburgers/_sass/hamburgers/hamburgers";
+
 nav.custom-sidebar {
 
-  button.hamburger {
-    &:focus {
-      outline: none;
+  div.box-button-hamburger {
+    width: auto;
+
+    button.hamburger {
+      &:focus {
+        outline: none;
+      }
     }
   }
 
+
+  ul.list-group-sidebar {
+    width: 100%;
+
+    li {
+      list-style: none;
+      margin-top: 2rem;
+      a {
+        color: lightgray;
+        transition: 0.3s all linear;
+      }
+
+      &:hover a{
+        color: black;
+      }
+
+    }
+
+    li#menu-text {
+      position: relative;
+      height: 4rem;
+      color: black;
+      letter-spacing: 3px;
+
+      span {
+        overflow: hidden;
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transition: transform 275ms ease;
+
+        writing-mode: tb-rl;
+        font-family: "Playfair Display SC", serif;
+
+        &:before {
+          display: inline-block;
+          content: "";
+          background: rgba(0, 0, 0, 0.4);
+          filter: invert(64%) sepia(80%) saturate(355%) hue-rotate(356deg) brightness(101%) contrast(89%);
+          transform: translateY(100%);
+          transition: transform 275ms ease;
+          position: absolute;
+          height: 60px;
+          width: 100%;
+          z-index: -1;
+        }
+      }
+
+      &:hover span {
+
+        &:before {
+          transform: translateY(0%);
+        }
+
+        //color: red;
+      }
+    }
+
+  }
 
 }

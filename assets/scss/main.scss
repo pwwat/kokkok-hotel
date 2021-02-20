@@ -41,6 +41,17 @@ $light-green-primary: #9DC88D;
 }
 
 
+@include media-breakpoint-up(md) {
+
+  div.custom-col-sidebar {
+    width: 5.333333%;
+  }
+
+  div.custom-col-content {
+    width: 94.666667%;
+  }
+}
+
 @import "header";
 @import "navbar";
 
