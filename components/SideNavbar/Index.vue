@@ -4,8 +4,7 @@
       <div class="row">
         <div class="col-12 clearfix mt-3 g-0 g-sm-2 d-block mx-auto box-button-hamburger">
           <button :class="['hamburger hamburger--spring', isActive ? 'is-active' : 'p-0', 'p-sm-2' ]"
-                  type="button" @click.prevent="isActive = !isActive"
-          >
+                  type="button" @click.prevent="isActive = !isActive">
             <span class="hamburger-box">
               <span class="hamburger-inner"></span>
             </span>

@@ -1,55 +1,36 @@
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import "~bootstrap/scss/mixins";
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+/* ------- Add Fonts -------- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@1,400;1,700&display=swap');
 
-@import "~bootstrap/scss/mixins";
-
-/* ------- customize primary buttons -------- */
-$yellow-primary: #F1B24A;
-$dark-green-primary: #164A41;
-$medium-green-primary: #4D774E;
-$light-green-primary: #9DC88D;
-
-
-.btn-yellow {
-  @include button-variant($yellow-primary, darken($yellow-primary, 7.5%), darken($yellow-primary, 10%), lighten($yellow-primary, 5%), lighten($yellow-primary, 10%), darken($yellow-primary, 30%));
-  color: white;
-}
-
-.btn-outline-yellow {
-  @include button-outline-variant($yellow-primary, #222222, lighten($yellow-primary, 5%), $yellow-primary);
-}
-
-.btn-dark-green {
-  @include button-variant($dark-green-primary, darken($dark-green-primary, 7.5%), darken($dark-green-primary, 10%), lighten($dark-green-primary, 5%), lighten($dark-green-primary, 10%), darken($dark-green-primary, 30%));
-  color: white;
-}
-
-.btn-outline-green {
-  @include button-outline-variant($dark-green-primary, #222222, lighten($dark-green-primary, 5%), $dark-green-primary);
-  color: $medium-green-primary;
-}
-
-// Override Class
-.btn {
-  @include border-radius(0px);
-  font-family: 'Roboto Slab', serif;
-  font-weight: bold;
-}
-
+// Add custom variable , function bootstrap
+@import "~assets/scss/custom.scss";
 
 @include media-breakpoint-up(md) {
 
   div.custom-col-sidebar {
     width: 5.333333%;
+    top: 0;
+    left:0;
+    z-index: 100;
   }
 
   div.custom-col-content {
     width: 94.666667%;
+    margin-left: 5.333333%;
   }
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: $dark-green-primary;
+  outline: 1px solid slategrey;
+}
+
+body::-webkit-scrollbar-track {
+  background: #fff;
 }
 
 @import "header";

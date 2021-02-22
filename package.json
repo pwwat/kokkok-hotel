@@ -42,6 +42,7 @@
     "secure-ls": "^1.2.6",
     "sequelize": "^6.3.5",
     "simple-browser-fingerprint": "^1.0.0",
+    "swiper": "^6.4.15",
     "url": "^0.11.0",
     "vue": "^2.6.12",
     "vue-sweetalert2": "^3.0.8",

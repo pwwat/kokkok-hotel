@@ -4,7 +4,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
         <div class="container">
           <router-link class="navbar-brand" :to="'/'">KOKKOK</router-link>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          <button class="navbar-toggler d-none" type="button" data-bs-toggle="collapse"
                   data-bs-target="#navbarSupportedContent"
                   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
           >
@@ -48,7 +48,8 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#"><i class="far fa-calendar-alt"></i> My Reservations</a>
                     <a class="dropdown-item" href="#"><i class="far fa-bell"></i> Notifications</a>
-                    <router-link class="dropdown-item" to="/profile/edit"><i class="far fa-address-card"></i> Edit
+                    <router-link class="dropdown-item" to="/profile/edit">
+                      <i class="far fa-address-card"></i> Edit
                       Profile
                     </router-link>
                     <div class="dropdown-divider"></div>
@@ -134,6 +135,12 @@ export default {
 @include media-breakpoint-up(md) {
   .user-detail {
     padding-left: 10px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  nav.navbar > div.container {
+    margin: 0 2rem;
   }
 }
 

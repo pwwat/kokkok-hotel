@@ -1,0 +1,87 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+/* ------- customize primary buttons -------- */
+$yellow-primary: #F1B24A;
+$dark-green-primary: #164A41;
+$medium-green-primary: #4D774E;
+$light-green-primary: #9DC88D;
+$lighter-green-background: #f0f2ed;
+/* ------- color variable -------- */
+$main-background: #FAF9F6;
+
+
+.btn-yellow {
+  @include button-variant($yellow-primary, darken($yellow-primary, 7.5%), darken($yellow-primary, 10%), lighten($yellow-primary, 5%), lighten($yellow-primary, 10%), darken($yellow-primary, 30%));
+  color: white;
+}
+
+.btn-outline-yellow {
+  @include button-outline-variant($yellow-primary, #222222, lighten($yellow-primary, 5%), $yellow-primary);
+}
+
+.btn-dark-green {
+  @include button-variant($dark-green-primary, darken($dark-green-primary, 7.5%), darken($dark-green-primary, 10%), lighten($dark-green-primary, 5%), lighten($dark-green-primary, 10%), darken($dark-green-primary, 30%));
+  color: white;
+}
+
+.btn-outline-green {
+  @include button-outline-variant($dark-green-primary, #222222, lighten($dark-green-primary, 5%), $dark-green-primary);
+  color: $medium-green-primary;
+}
+
+// Override Class
+.btn {
+  @include border-radius(0px);
+  font-family: 'Roboto Slab', serif;
+  font-weight: bold;
+}
+
+// Underline Animation
+.link-to {
+  font-family: "Roboto Slab", serif;
+  letter-spacing: 3px;
+  color: $dark-green-primary;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+
+  &:hover:after {
+    transform: scaleX(0);
+    transform-origin: right center;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: calc(100% - .3rem);
+    height: 1px;
+    background-color: #613842;
+    transition: transform .5s cubic-bezier(.17, .67, .39, 1.01);
+    transform-origin: left center;
+  }
+}
+
+.wrap-image {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.title-content {
+  font-family: 'Playfair Display SC', serif;
+  color: $dark-green-primary;
+  font-weight: bold;
+  letter-spacing: 5px;
+  margin: 3rem 0;
+}
+
+.paragraph-content {
+  font-family: "Roboto Slab", serif;
+  font-weight: normal;
+  line-height: 1.8rem;
+}

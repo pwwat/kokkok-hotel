@@ -1,14 +1,20 @@
 <template>
-  <div style="text-align: center;">
-    {{ user }} <br>
-    Usersssa: {{ users }}
+  <div class="wrap-content">
+    <Intro></Intro>
+    <OurRoom></OurRoom>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import Intro from '@/components/Content/Homepage/Intro'
+import OurRoom from '@/components/Content/Homepage/OurRoom'
 
 export default {
+  components: {
+    Intro,
+    OurRoom
+  },
   data () {
     return {
       users: []
@@ -27,7 +33,7 @@ export default {
       try {
         let data = await this.$axios.$get('/users')
         if (!data.error) {
-          console.log('userrrr', data)
+          console.log('user', data)
           this.users = data.users
         } else {
           console.error('ผิดพลาด ' + data.message)
@@ -40,6 +46,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "../assets/scss/custom";
 
+div.wrap-content {
+  position: relative;
+  background: $main-background;
+}
 </style>

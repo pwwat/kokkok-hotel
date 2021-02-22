@@ -2,10 +2,10 @@
   <div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-2 col-md-1 g-0 custom-col-sidebar">
+        <div class="col-2 col-md-1 g-0 custom-col-sidebar position-fixed">
           <side-nav-bar></side-nav-bar>
         </div>
-        <div class="col-10 col-md-11 g-0 custom-col-content">
+        <div class="col-10 offset-2 col-md-11 g-0 custom-col-content">
           <Header />
           <Nuxt />
         </div>
