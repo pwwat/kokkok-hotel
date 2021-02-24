@@ -3,7 +3,27 @@ $hamburger-padding-y: 15px;
 $hamburger-layer-spacing: 5px;
 $hamburger-layer-height: 3px;
 
+
+@import "~assets/scss/custom.scss";
 @import "~hamburgers/_sass/hamburgers/hamburgers";
+
+@include media-breakpoint-down(xl) {
+  span.hamburger-inner, span.hamburger-inner::before, span.hamburger-inner::after {
+    width: 28px;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  span.hamburger-inner, span.hamburger-inner::before, span.hamburger-inner::after {
+    width: 22px;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  span.hamburger-box {
+    left: 5px;
+  }
+}
 
 nav.custom-sidebar {
 
@@ -14,6 +34,7 @@ nav.custom-sidebar {
       &:focus {
         outline: none;
       }
+      padding: 0;
     }
   }
 
@@ -24,12 +45,13 @@ nav.custom-sidebar {
     li {
       list-style: none;
       margin-top: 2rem;
+
       a {
         color: lightgray;
         transition: 0.3s all linear;
       }
 
-      &:hover a{
+      &:hover a {
         color: black;
       }
 

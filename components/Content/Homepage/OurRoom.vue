@@ -2,8 +2,8 @@
   <section>
     <div class="row g-0 main-our-room">
       <div class="background-our-room"></div>
-      <div class="col-12 col-md-6">
-        <h1 class="text-center title-content">Our Room</h1>
+      <div class="col-12 col-md-6 text-center">
+        <h1 class="d-inline-block title-content">The Comfort <br>Your Deserve</h1>
       </div>
       <div class="col-12 col-md-6">
         <p class="paragraph-content">
@@ -39,17 +39,43 @@ div.main-our-room {
     left: 0;
     right: 0;
     width: 100%;
-    height: calc(100% + 175px);
+    height: calc(100% + 240px);
     background: $lighter-green-background;
-    z-index: -1;
+    z-index: -2;
+  }
+
+  h1.title-content {
+    margin: 0;
+    text-align: left;
   }
 }
 
-@include media-breakpoint-up(md) {
-  div.background-our-room  {
+@include media-breakpoint-up(xxl) {
+  div.background-our-room {
     height: 90%;
-    top: -25%;
+    top: -70%;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  div.background-our-room {
+    height: 100%;
+    top: -90%;
   }
 
+}
+
+@include media-breakpoint-down(xl) {
+  div.background-our-room {
+    //height: 90%;
+    top: -12%;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  div.background-our-room {
+    //height: 90%;
+    top: -25%;
+  }
 }
 </style>
