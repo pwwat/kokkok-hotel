@@ -85,3 +85,9 @@ $main-background: #FAF9F6;
   font-weight: normal;
   line-height: 1.8rem;
 }
+
+// Pagination Swiper
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: $light-green-primary;
+}
+

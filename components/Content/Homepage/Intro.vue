@@ -1,12 +1,12 @@
 <template>
   <section id="main-intro">
     <div class="row align-items-start g-0">
-      <div class="col-12 col-md-6 order-1 order-sm-0">
+      <div class="col-12 col-md-6 order-1 order-md-0">
         <div class="wrap-image-portrait">
           <img src="@/static/images/intro/intro_1.jpg" class="img-fluid" alt="">
         </div>
       </div>
-      <div class="col-12 col-md-6 order-0 order-sm-1">
+      <div class="col-12 col-md-6 order-0 order-md-1">
         <div class="wrap-content-intro">
           <h1 class="title-content">Wonderfully Memories</h1>
 
@@ -43,7 +43,6 @@ export default {
 @import "~@/assets/scss/custom";
 
 section#main-intro {
-  padding-top: 6rem;
 
   div.wrap-image-portrait {
     position: relative;
@@ -53,7 +52,6 @@ section#main-intro {
   div.wrap-content-intro {
 
     div.second-image {
-      margin-top: 5rem;
       z-index: 1;
 
       &:before {
@@ -75,92 +73,93 @@ section#main-intro {
   }
 }
 
-@include media-breakpoint-up(xxl) {
-  div.wrap-image-portrait {
-    padding-right: 8rem;
-    padding-left: 8rem;
-  }
-
-  div.wrap-content-intro {
-
-    div.second-image {
-      transform: translateX(-12vw) translateY(25vh);
-    }
-  }
-
-}
-
-@include media-breakpoint-down(xxl) {
-  div.wrap-image-portrait {
-    padding-right: 2rem;
-    padding-left: 2rem;
-  }
-
-  div.wrap-content-intro {
-    h1.title-content {
-      margin: 1rem 0;
-    }
-
-    p.paragraph-content {
-      margin: 2rem 0;
-    }
-
-    div.second-image {
-      transform: translateX(-13vw) translateY(-3vh);
-    }
-  }
-}
-
-@include media-breakpoint-up(xl) {
+@include media-breakpoint-up(xs) {
   section#main-intro {
-    margin-bottom: 15rem;
+    margin-bottom: 2rem;
+    padding-top: 0;
+    div.wrap-image-portrait {
+      padding: 0;
+    }
+
+    div.wrap-content-intro {
+      padding: 2rem;
+    }
   }
 }
 
-@include media-breakpoint-down(xl) {
+@include media-breakpoint-up(sm) {
   section#main-intro {
-    margin-bottom: 10rem;
+    margin-bottom: 5rem;
+
+    div.wrap-content-intro {
+      margin-bottom: 3rem;
+    }
   }
+
 }
 
-@include media-breakpoint-up(xxl) {
-  section#main-intro {
-    margin-bottom: 20rem;
+@include media-breakpoint-up(md) {
+  section#main-intro{
+    padding-top: 6rem;
+    div.wrap-image-portrait {
+      padding-right: 2rem;
+      padding-left: 2rem;
+    }
   }
-}
 
-@include media-breakpoint-down(lg) {
-
-  div.wrap-content-intro {
-    padding: 0 1rem;
-  }
 }
 
 @include media-breakpoint-up(lg) {
-  div.wrap-content-intro {
-    padding: 0 2rem;
-  }
-
   div.wrap-image-portrait {
-    padding-right: 5rem;
-    padding-left: 5rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
   }
-  div.wrap-content-intro p.paragraph-content {
-    margin: 3rem 0;
-  }
-}
 
-@include media-breakpoint-down(md) {
   section#main-intro {
     margin-bottom: 5rem;
   }
 
   div.wrap-content-intro {
-    margin-bottom: 3rem;
+    padding: 0 2rem;
+
+    div.second-image {
+      margin-top: 2rem;
+      transform: translateX(-13vw);
+    }
   }
 
-  div.wrap-image-portrait {
-    padding: 0;
+  div.wrap-content-intro p.paragraph-content {
+    margin: 3rem 0;
   }
+}
+
+@include media-breakpoint-up(xl) {
+  section#main-intro {
+    margin-bottom: 10rem;
+
+    div.wrap-image-portrait {
+      padding-right: 2rem;
+      padding-left: 2rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(xxl) {
+  section#main-intro {
+
+    div.wrap-image-portrait {
+      padding-right: 6rem;
+      padding-left: 6rem;
+    }
+  }
+
+  div.wrap-content-intro {
+
+    div.second-image {
+      margin-top: 6rem;
+      transform: translateX(-12vw)
+    }
+  }
+
 }
 </style>
