@@ -1,19 +1,19 @@
 <template>
   <div class="wrap-content">
     <Intro></Intro>
-    <OurRoom></OurRoom>
+    <Experience></Experience>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import Intro from '@/components/Content/Homepage/Intro'
-import OurRoom from '@/components/Content/Homepage/OurRoom'
+import Experience from '~/components/Content/Homepage/Experience'
 
 export default {
   components: {
     Intro,
-    OurRoom
+    Experience
   },
   data () {
     return {

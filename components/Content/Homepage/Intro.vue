@@ -146,7 +146,7 @@ section#main-intro {
 
 @include media-breakpoint-up(xxl) {
   section#main-intro {
-
+    margin-bottom: 8rem;
     div.wrap-image-portrait {
       padding-right: 6rem;
       padding-left: 6rem;
@@ -156,7 +156,7 @@ section#main-intro {
   div.wrap-content-intro {
 
     div.second-image {
-      margin-top: 6rem;
+      margin-top: 10rem;
       transform: translateX(-12vw)
     }
   }
