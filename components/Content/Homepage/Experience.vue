@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="experience">
     <div class="main-our-room">
       <div class="background-our-room"></div>
       <div class="content-our-room row g-0">
@@ -158,7 +158,6 @@ export default {
         }
 
       })
-      // swiper.slideNext(1000)
     })
   }
 }
@@ -167,92 +166,85 @@ export default {
 <style lang="scss" scoped>
 @import "~@/assets/scss/custom.scss";
 
-div.main-our-room {
+section#experience {
+  margin-bottom: 10rem;
 
-  position: relative;
-  z-index: 0;
+  div.main-our-room {
 
-  div.background-our-room {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: $lighter-green-background;
-    z-index: -2;
-  }
-
-  h1.title-content {
-    margin: 0;
-    text-align: left;
-  }
-}
-
-div.slide-our-room {
-  z-index: 1;
-  position: relative;
-  //background: $lighter-green-background;
-  margin-bottom: 50%;
-
-  div.wrap-carousel {
-    opacity: 1;
-    margin-bottom: 0;
     position: relative;
-    height: auto;
+    z-index: 0;
 
-    div.wrap-inner-carousel {
-      position: relative;
-      overflow-x: hidden;
+    div.background-our-room {
+      position: absolute;
+      left: 0;
+      right: 0;
       width: 100%;
+      background: $lighter-green-background;
+      z-index: -2;
+    }
 
-      div.swiper-container {
+    h1.title-content {
+      margin: 0;
+      text-align: left;
+    }
+  }
+
+  div.slide-our-room {
+    z-index: 1;
+    position: relative;
+    //background: $lighter-green-background;
+    div.wrap-carousel {
+      opacity: 1;
+      margin-bottom: 0;
+      position: relative;
+      height: auto;
+
+      div.wrap-inner-carousel {
+        position: relative;
+        overflow-x: hidden;
         width: 100%;
 
-        div.swiper-slide {
-          div.box-image {
-            position: relative;
-            max-height: 560px;
-            width: 100%;
+        div.swiper-container {
+          width: 100%;
 
-            &:before {
-              display: block;
-              content: "";
+          div.swiper-slide {
+            div.box-image {
+              position: relative;
+              max-height: 560px;
               width: 100%;
-              padding-top: 150.26596%;
+
+              &:before {
+                display: block;
+                content: "";
+                width: 100%;
+                padding-top: 150.26596%;
+              }
+
+              img {
+                object-position: center;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                -o-object-fit: cover;
+                object-fit: cover;
+              }
             }
 
-            img {
-              object-position: center;
+            div.wrap-experience-info {
               position: absolute;
-              width: 100%;
-              height: 100%;
-              top: 0;
+              bottom: 0;
               left: 0;
-              -o-object-fit: cover;
-              object-fit: cover;
+              padding: 30px;
+              color: #fff;
+              z-index: 2;
+              width: 100%;
+              font-family: "Roboto Slab", serif;
             }
-          }
 
-          div.wrap-experience-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            padding: 30px;
-            color: #fff;
-            z-index: 2;
-            width: 100%;
-            font-family: "Roboto Slab", serif;
-          }
-
-          div.bottom-overlay-text {
-            position: absolute;
-            height: 25%;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
           }
         }
-
       }
     }
   }

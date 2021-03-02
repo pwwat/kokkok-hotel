@@ -91,3 +91,11 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   background: $light-green-primary;
 }
 
+.bottom-overlay-text {
+  position: absolute;
+  height: 25%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
