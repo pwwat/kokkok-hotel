@@ -3,6 +3,8 @@
     <Intro></Intro>
     <Experience></Experience>
     <Trip></Trip>
+    <WeAreExperience></WeAreExperience>
+    <OurClientSay></OurClientSay>
   </div>
 </template>
 
@@ -11,12 +13,16 @@ import { mapState } from 'vuex'
 import Intro from '@/components/Content/Homepage/Intro'
 import Experience from '@/components/Content/Homepage/Experience'
 import Trip from '@/components/Content/Homepage/Trip'
+import WeAreExperience from '@/components/Content/Homepage/WeAreExperience'
+import OurClientSay from '@/components/Content/Homepage/OurClientSay'
 
 export default {
   components: {
     Intro,
     Experience,
-    Trip
+    Trip,
+    WeAreExperience,
+    OurClientSay
   },
   data () {
     return {

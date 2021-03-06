@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="trip">
     <div class="wrap-text mx-auto">
       <h1 class="title-content">Ignite Your Trip</h1>
 
@@ -171,6 +171,10 @@ div.wrap-trip-album {
 }
 
 @include media-breakpoint-up(xs) {
+  section#trip {
+    margin-bottom: 15rem;
+  }
+
   div.wrap-text p {
     padding: 0 3rem;
     text-align: left;
