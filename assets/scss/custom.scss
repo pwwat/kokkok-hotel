@@ -86,9 +86,16 @@ $main-background: #FAF9F6;
   line-height: 1.8rem;
 }
 
-// Pagination Swiper
+// Pagination Swiper Color
 span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   background: $light-green-primary;
+}
+// Pagination Swiper Custom Dot
+div.swiper-pagination {
+  span.custom-dot {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 .bottom-overlay-text {
