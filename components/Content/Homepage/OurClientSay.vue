@@ -8,7 +8,7 @@
       </div>
 
       <div class="row justify-content-center">
-        <div class="col-12 col-md-8 align-self-center">
+        <div class="col-12 col-md-10 col-lg-8 align-self-center">
           <div class="client-slide">
             <!-- Slider main container -->
             <div ref="swiper-our-client" class="swiper-container swiper-our-client">
@@ -138,7 +138,7 @@ export default {
 @import "~@/assets/scss/custom.scss";
 
 section#our-client-say {
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 
   h1.title-content {
     text-align: center;
@@ -181,6 +181,14 @@ section#our-client-say {
               bottom: -60px;
               right: 40px;
             }
+
+            div.author {
+              margin-top: 1rem;
+              font-family: 'Playfair Display SC', serif;
+              text-align: center;
+              color: $dark-green-primary;
+              font-size: 1.5rem;
+            }
           }
 
         }
@@ -192,6 +200,7 @@ section#our-client-say {
       position: relative;
       max-width: 320px;
       margin: 2rem auto;
+      z-index: 2;
 
       div.button-nav {
         position: relative;
@@ -221,19 +230,37 @@ section#our-client-say {
 }
 
 @include media-breakpoint-up(xs) {
+
+  h1.title-content {
+    font-size: 2rem;
+  }
   div.swiper-slide {
     blockquote.wrap-quote-and-author {
 
+      span.quote-text {
+        font-size: 1rem;
+      }
+
       div[class^="wrap-quote"] img {
-        width: 28px;
+        width: 20px;
       }
     }
   }
 }
 
+@include media-breakpoint-up(lg) {
+  h1.title-content {
+    font-size: 2.5rem;
+  }
+}
+
 @include media-breakpoint-up(xl) {
+
   div.swiper-slide {
     blockquote.wrap-quote-and-author {
+      span.quote-text {
+        font-size: 1.2rem;
+      }
 
       div[class^="wrap-quote"] img {
         width: 40px;

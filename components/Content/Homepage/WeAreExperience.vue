@@ -75,7 +75,8 @@ section#we-are-the-one {
     div.left-side div.box-image {
       img {
         display: block;
-        max-width: 27rem;
+        max-width: 90%;
+        height: auto;
       }
     }
 
@@ -174,6 +175,7 @@ section#we-are-the-one {
 @include media-breakpoint-up(lg) {
   section#we-are-the-one {
     padding: 0 10rem 8rem;
+    margin-bottom: 10rem;
 
     div.right-side {
       div.wrap-title {
@@ -193,6 +195,12 @@ section#we-are-the-one {
         }
       }
     }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  section#we-are-the-one {
+    margin-bottom: 5rem;
   }
 }
 </style>

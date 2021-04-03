@@ -27,7 +27,7 @@
         <div class="wrap-carousel">
           <div class="wrap-inner-carousel">
             <!-- Slider main container -->
-            <div class="swiper-container">
+            <div class="swiper-container swiper-experience">
               <!-- Additional required wrapper -->
               <div class="swiper-wrapper">
                 <!-- Slides -->
@@ -120,7 +120,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.swiper = new Swiper('.swiper-container', {
+      this.swiper = new Swiper('.swiper-experience', {
         autoplay: {
           delay: 3000,
           disableOnInteraction: false
