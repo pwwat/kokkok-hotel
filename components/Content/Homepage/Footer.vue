@@ -1,21 +1,22 @@
 <template>
   <section id="footer">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium asperiores aut consectetur corporis cum error
-    est inventore ipsam ipsum, laboriosam, molestias pariatur provident quibusdam reiciendis repellat reprehenderit
-    tempora. Impedit, necessitatibus.
+    <footer-brand></footer-brand>
   </section>
 </template>
 
 <script>
+import FooterBrand from '~/components/Content/Homepage/FooterBrand'
+
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  components: {
+    FooterBrand
+  }
 }
 </script>
 
 <style scoped lang="scss">
-
-section#footer{
-  background: #2D2D2D;
+section#footer {
+  position: relative;
 }
-
 </style>
