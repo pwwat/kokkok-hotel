@@ -142,6 +142,8 @@ section#our-client-say {
 
   h1.title-content {
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
 
   div.client-slide {

@@ -71,7 +71,7 @@ export default {
 div.wrap-content {
   position: relative;
   background: $main-background;
-  padding-bottom: 4rem;
+  //padding-bottom: 4rem;
 }
 
 div.background-bottom {

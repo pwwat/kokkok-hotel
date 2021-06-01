@@ -9,37 +9,37 @@
               <!-- Additional required wrapper -->
               <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide d-flex" :class="fadeBrand(0)">
+                <div class="swiper-slide d-flex">
                   <div class="image-box">
                     <img src="@/static/images/footer/brand1.png" class="img-fluid" alt="">
                   </div>
                 </div>
-                <div class="swiper-slide  d-flex" :class="fadeBrand(1)">
+                <div class="swiper-slide  d-flex">
                   <div class="image-box">
                     <img src="@/static/images/footer/brand2.png" class="img-fluid" alt="">
                   </div>
                 </div>
-                <div class="swiper-slide  d-flex" :class="fadeBrand(2)">
+                <div class="swiper-slide  d-flex">
                   <div class="image-box">
                     <img src="@/static/images/footer/brand3.png" class="img-fluid" alt="">
                   </div>
                 </div>
-                <div class="swiper-slide  d-flex" :class="fadeBrand(3)">
+                <div class="swiper-slide  d-flex">
                   <div class="image-box">
                     <img src="@/static/images/footer/brand4.png" class="img-fluid" alt="">
                   </div>
                 </div>
-                <div class="swiper-slide  d-flex" :class="fadeBrand(4)">
+                <div class="swiper-slide  d-flex">
                   <div class="image-box">
                     <img src="@/static/images/footer/brand5.png" class="img-fluid" alt="">
                   </div>
                 </div>
-                <div class="swiper-slide  d-flex" :class="fadeBrand(5)">
+                <div class="swiper-slide  d-flex">
                   <div class="image-box">
                     <img src="@/static/images/footer/brand6.png" class="img-fluid" alt="">
                   </div>
                 </div>
-                <div class="swiper-slide  d-flex" :class="fadeBrand(6)">
+                <div class="swiper-slide  d-flex">
                   <div class="image-box">
                     <img src="@/static/images/footer/brand7.png" class="img-fluid" alt="">
                   </div>
@@ -49,10 +49,10 @@
           </div>
 
           <div class="wrap-nav text-center">
-            <div class="button-nav prev-nav" @click.prevent="swiper.slidePrev(500), slideActive()">
+            <div class="button-nav prev-nav" @click.prevent="swiper.slidePrev(500)">
               <i class="fas fa-chevron-left"></i>
             </div>
-            <div class="button-nav next-nav" @click.prevent="swiper.slideNext(500), slideActive()">
+            <div class="button-nav next-nav" @click.prevent="swiper.slideNext(500)">
               <i class="fas fa-chevron-right"></i>
             </div>
           </div>
@@ -75,14 +75,13 @@ export default {
   mounted () {
     this.$nextTick(() => {
       this.swiper = new Swiper('.swiper-footer-brand', {
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: true
-        },
+        autoplay: false,
+        allowTouchMove: true,
+        grabCursor: true,
 
         // Optional parameters
         direction: 'horizontal',
-        loop: false,
+        loop: true,
 
         // Navigation arrows
         navigation: {
@@ -90,35 +89,47 @@ export default {
           prevEl: '.swiper-button-prev'
         },
         slidesPerView: 5,
-        spaceBetween: 80
+        spaceBetween: 80,
 
+        on: {
+          init: (swiper) => {
+            this.setHiddenSlide(swiper)
+          }
+        }
+      })
+
+      this.swiper.on('slideChange', (swiper) => {
+        let activeIndex = swiper.activeIndex
+        if (activeIndex === 4 || activeIndex === 12) {
+          // สำหรับ slide แบบลูป
+          for (let index = activeIndex; index <= 16; index++) {
+            let slideBetween = swiper.slides[index]
+            slideBetween.style.opacity = 1
+          }
+          swiper.slides[activeIndex].style.opacity = '0.2'
+          // lastslide
+          swiper.slides[activeIndex + 4].style.opacity = '0.2'
+        } else {
+          this.setHiddenSlide(swiper)
+        }
       })
     })
   },
   methods: {
-    fadeBrand (index) {
-      // console.log('indexxx', index)
-      if (this.swiper) {
-        // fade first
-        if (this.swiper.activeIndex >= index) {
-          return 'fade-brand'
-        }
-
-        let fadeIndex = Number(index - this.swiper.activeIndex)
-        // console.log('fadeIndex', fadeIndex)
-
-        // fade last
-        if (fadeIndex >= 4) {
-          return 'fade-brand'
-        }
+    setHiddenSlide (swiper) {
+      let indexCurrentSlide = swiper.realIndex
+      let indexAtFirst = 5 + indexCurrentSlide
+      let indexAtLast = 9 + indexCurrentSlide
+      for (let index = 6 + indexCurrentSlide; index <= 8 + indexCurrentSlide; index++) {
+        let slideBetween = swiper.slides[index]
+        slideBetween.style.opacity = 1
       }
-    },
-    slideActive () {
-      console.log('swiper.activeIndex ', this.swiper.activeIndex)
-      console.log('swiper.isBeginning ', this.swiper.isBeginning)
-      console.log('swiper.isEnd ', this.swiper.isEnd)
-    }
 
+      let slideFirst = swiper.slides[indexAtFirst]
+      let slideLast = swiper.slides[indexAtLast]
+      slideFirst.style.opacity = '0.2'
+      slideLast.style.opacity = '0.2'
+    }
   }
 }
 </script>
@@ -141,6 +152,7 @@ section#footer-brand {
 
     div.swiper-slide div.image-box {
       width: 7rem;
+      cursor: grab;
     }
 
     div.wrap-nav {
@@ -149,7 +161,6 @@ section#footer-brand {
       height: 100%;
       top: 0;
       left: 0;
-      z-index: 1;
       color: white;
 
       div.prev-nav {
@@ -157,6 +168,8 @@ section#footer-brand {
         left: 0;
         top: 50%;
         transform: translateY(-50%);
+        cursor: pointer;
+
       }
 
       div.next-nav {
@@ -164,6 +177,8 @@ section#footer-brand {
         top: 50%;
         right: 0;
         transform: translateY(-50%);
+        cursor: pointer;
+
       }
 
     }
