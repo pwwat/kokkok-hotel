@@ -2,9 +2,9 @@
   <section id="footer-content">
     <div class="container">
       <div class="row main-content">
-        <div class="col-12 col-md-9">
+        <div class="col-12 col-md-9 d-none d-md-block">
           <div class="row list-footer">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-6 col-xl-3">
               <div class="title">
                 <h4>TAILORED EXPERIENCES</h4>
               </div>
@@ -19,7 +19,7 @@
                 <li><a href="#" class="link-blink">Speciality</a></li>
               </ul>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-6 col-xl-3">
               <div class="title">
                 <h4>DESTINATIONS</h4>
               </div>
@@ -32,7 +32,7 @@
                 <li><a href="#" class="link-blink">Classic Europe</a></li>
               </ul>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-6 col-xl-3">
               <div class="title">
                 <h4>PRIVATE RENTALS</h4>
               </div>
@@ -42,7 +42,7 @@
                 <li><a href="#" class="link-blink">Villas & Houses</a></li>
               </ul>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-6 col-xl-3">
               <div class="title">
                 <h4>ABOUT US</h4>
               </div>
@@ -54,7 +54,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-3 information">
           <div class="logo-footer">
             <img src="/images/logo_kokkok.png" alt="" class="img-fluid">
           </div>
@@ -77,30 +77,37 @@
       </div>
 
       <div class="row license">
-        <div class="col-12 col-md-6 left-side">
-          <div class="d-flex flex-row">
+        <div class="col-lg-12 col-xl-4 left-side">
+          <div class="d-flex flex-row align-items-center">
             <img id="license-img" src="/images/footer/licenced_footer.svg" alt="">
-            <span class="d-flex align-items-center">Licenced by the Commission for Aviation Regulation, TA 0792</span>
+            <span>Licenced by the Commission for Aviation Regulation, TA 0792</span>
           </div>
         </div>
-        <div class="col-12 col-md-6 right-side">
-          <ul class="menu-item d-flex align-items-center justify-content-end">
-            <li>
-              <a href="#" class="link-blink">Terms & Conditions</a>
-            </li>
-            <li>
-              <a href="#" class="link-blink">Sustainability Policy</a>
-            </li>
-            <li>
-              <a href="#" class="link-blink">Privacy Policy</a>
-            </li>
-            <li>
-              Site By
-            </li>
-            <li style="font-size: 1.5rem;">
+        <div class="col-lg-12 col-xl-8 right-side">
+          <div class="wrap-all-legal d-flex flex-wrap justify-content-xl-end">
+            <ul class="menu-item d-flex align-items-center">
+              <li>
+                <a href="#" class="link-blink">Terms & Conditions</a>
+              </li>
+              <li>
+                <a href="#" class="link-blink">Sustainability Policy</a>
+              </li>
+              <li>
+                <a href="#" class="link-blink">Privacy Policy</a>
+              </li>
+              <!--            <li>
+                Site By
+              </li>
+              <li style="font-size: 1.5rem;">
+                <a href="https://pongniwat-w.medium.com/" target="_blank">𝓦𝓪𝓽</a>
+              </li>-->
+            </ul>
+
+            <div class="warp-site-by justify-content-center justify-content-xl-end">
+              <span>Site By</span>
               <a href="https://pongniwat-w.medium.com/" target="_blank">𝓦𝓪𝓽</a>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -157,7 +164,6 @@ section#footer-content {
     }
 
     div.content-contact {
-      text-align: left;
       font-weight: lighter;
 
       p {
@@ -202,7 +208,6 @@ section#footer-content {
       }
 
       span {
-        width: 15rem;
         font-size: 13px;
         font-weight: lighter;
         margin-left: 1rem;
@@ -212,7 +217,6 @@ section#footer-content {
     div.right-side ul.menu-item {
       padding: 0;
       margin: 0;
-      text-align: right;
       height: 90px;
 
       li {
@@ -221,11 +225,6 @@ section#footer-content {
         font-size: 13px;
         font-weight: lighter;
         padding-right: 0.5rem;
-
-        a {
-          text-decoration: none;
-          color: inherit;
-        }
       }
     }
 
@@ -233,10 +232,67 @@ section#footer-content {
 
 }
 
-@include media-breakpoint-up(xl) {
+@include media-breakpoint-up(xs) {
   section#footer-content {
     padding: 5rem 8rem;
 
+    div.information {
+      text-align: center;
+    }
+
+    div.right-side {
+
+      div.wrap-all-legal {
+        flex-direction: column;
+
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        ul.menu-item {
+          text-align: left;
+
+        }
+
+        div.warp-site-by {
+          display: flex;
+          align-items: center;
+
+          a {
+            margin-left: 5px;
+          }
+        }
+      }
+
+    }
   }
+}
+
+@include media-breakpoint-up(md) {
+  section#footer-content {
+    div.information {
+      text-align: left;
+    }
+
+    div.right-side {
+      div.wrap-all-legal {
+        flex-direction: row;
+
+        ul.menu-item {
+          text-align: right;
+        }
+
+        div.warp-site-by {
+          margin-left: 25px;
+          margin-top: 0;
+          justify-content: flex-end;
+        }
+      }
+
+    }
+
+  }
+
 }
 </style>

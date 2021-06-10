@@ -12,7 +12,7 @@
                       <div class="profile-image" @click="$refs.avatarImage.click()">
                         <span class="text-center h4"> <i class="fas fa-pencil-alt"></i></span>
                         <div class="image-cropper dropdown mx-auto" style="height: 8rem; width: 8rem;">
-                          <img :src="user.profile_image_url"  class="rounded-circle avatar">
+                          <img :src="user.profile_image_url" class="rounded-circle avatar">
                         </div>
                         <input ref="avatarImage" type="file" style="display: none;" accept="image/*"
                                @change="onUploadImage"
@@ -20,7 +20,6 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
 
                 <div class="col-12 col-sm-8">

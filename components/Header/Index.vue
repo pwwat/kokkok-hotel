@@ -52,7 +52,8 @@
             </div>
           </div>
           <div class="col-auto g-0 g-sm-2 col-md-auto mt-3 mt-md-0
-            search-button d-grid d-md-flex align-items-sm-stretch">
+            search-button d-grid d-md-flex align-items-sm-stretch"
+          >
             <button class="btn btn-yellow">
               <img src="/images/header/search.svg" alt="">
             </button>
