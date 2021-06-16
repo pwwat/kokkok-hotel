@@ -95,12 +95,6 @@
               <li>
                 <a href="#" class="link-blink">Privacy Policy</a>
               </li>
-              <!--            <li>
-                Site By
-              </li>
-              <li style="font-size: 1.5rem;">
-                <a href="https://pongniwat-w.medium.com/" target="_blank">𝓦𝓪𝓽</a>
-              </li>-->
             </ul>
 
             <div class="warp-site-by justify-content-center justify-content-xl-end">
@@ -234,7 +228,7 @@ section#footer-content {
 
 @include media-breakpoint-up(xs) {
   section#footer-content {
-    padding: 5rem 8rem;
+    padding: 2rem 2rem;
 
     div.information {
       text-align: center;
@@ -271,6 +265,7 @@ section#footer-content {
 
 @include media-breakpoint-up(md) {
   section#footer-content {
+    padding: 5rem 8rem;
     div.information {
       text-align: left;
     }

@@ -63,7 +63,10 @@
 </template>
 
 <script>
-import { Swiper } from 'swiper'
+// import Swiper JS
+import { Swiper } from 'swiper/bundle'
+// import Swiper styles
+// import 'swiper/swiper-bundle.css'
 
 export default {
   name: 'FooterBrand',
@@ -78,7 +81,6 @@ export default {
         autoplay: false,
         allowTouchMove: true,
         grabCursor: true,
-
         // Optional parameters
         direction: 'horizontal',
         loop: true,
@@ -88,29 +90,54 @@ export default {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
         },
-        slidesPerView: 5,
-        spaceBetween: 80,
+        slidesPerView: 'auto',
+        loopedSlides: 5,
+        // Responsive breakpoints
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 3,
+            spaceBetween: 20
+          },
+          // when window width is >= 640px
+          960: {
+            slidesPerView: 5,
+            spaceBetween: 10
+          }
+        },
 
+        spaceBetween: 10,
         on: {
           init: (swiper) => {
-            this.setHiddenSlide(swiper)
+            if (parseInt(swiper.currentBreakpoint) !== 320) {
+              this.setHiddenSlide(swiper)
+            }
+          },
+          resize: (swiper) => {
+            if (parseInt(swiper.currentBreakpoint) !== 320) {
+              this.setHiddenSlide()
+            } else {
+              this.clearStyle(swiper)
+            }
           }
         }
       })
 
       this.swiper.on('slideChange', (swiper) => {
         let activeIndex = swiper.activeIndex
-        if (activeIndex === 4 || activeIndex === 12) {
-          // สำหรับ slide แบบลูป
-          for (let index = activeIndex; index <= 16; index++) {
-            let slideBetween = swiper.slides[index]
-            slideBetween.style.opacity = 1
+        if (parseInt(swiper.currentBreakpoint) !== 320) {
+          if (activeIndex === 4 || activeIndex === 12) {
+            // สำหรับ slide แบบลูป
+            for (let index = activeIndex; index <= 16; index++) {
+              let slideBetween = swiper.slides[index]
+              slideBetween.style.opacity = 1
+            }
+            swiper.slides[activeIndex].style.opacity = '0.2'
+            // lastslide
+            swiper.slides[activeIndex + 4].style.opacity = '0.2'
+          } else {
+            this.setHiddenSlide(swiper)
           }
-          swiper.slides[activeIndex].style.opacity = '0.2'
-          // lastslide
-          swiper.slides[activeIndex + 4].style.opacity = '0.2'
-        } else {
-          this.setHiddenSlide(swiper)
         }
       })
     })
@@ -129,6 +156,14 @@ export default {
       let slideLast = swiper.slides[indexAtLast]
       slideFirst.style.opacity = '0.2'
       slideLast.style.opacity = '0.2'
+    },
+    clearStyle (swiper) {
+      for (let index = 0; index <= 16; index++) {
+        let slideBetween = swiper.slides[index]
+        if (slideBetween && slideBetween.style) {
+          slideBetween.style.opacity = 1
+        }
+      }
     }
   }
 }
