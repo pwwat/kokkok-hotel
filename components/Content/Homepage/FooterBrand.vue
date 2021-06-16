@@ -188,6 +188,8 @@ section#footer-brand {
     div.swiper-slide div.image-box {
       width: 7rem;
       cursor: grab;
+      margin-right: auto !important;
+      margin-left: auto !important;
     }
 
     div.wrap-nav {
@@ -200,7 +202,6 @@ section#footer-brand {
 
       div.prev-nav {
         position: absolute;
-        left: 0;
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
@@ -210,7 +211,6 @@ section#footer-brand {
       div.next-nav {
         position: absolute;
         top: 50%;
-        right: 0;
         transform: translateY(-50%);
         cursor: pointer;
 
@@ -221,16 +221,34 @@ section#footer-brand {
 }
 
 @include media-breakpoint-up(xs) {
-  div.warp-footer-brand {
-    height: 6rem;
+  section#footer-brand {
+    div.warp-footer-brand {
+      height: 6rem;
 
+      div.wrap-nav div.prev-nav {
+        left: 1rem;
+      }
+
+      div.wrap-nav div.next-nav {
+        right: 1rem;
+      }
+    }
   }
 }
 
 @include media-breakpoint-up(xl) {
-  div.warp-footer-brand {
-    height: 7rem;
+  section#footer-brand {
+    div.warp-footer-brand {
+      height: 7rem;
 
+      div.wrap-nav div.prev-nav {
+        left: 0;
+      }
+
+      div.wrap-nav div.next-nav {
+        right: 0;
+      }
+    }
   }
 }
 </style>
