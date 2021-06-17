@@ -257,6 +257,8 @@ section#experience {
     div.wrap-carousel {
       margin-left: 0;
       width: 100%;
+      background: #f3f2ee;
+      padding-bottom: 2rem;
 
       div.wrap-nav {
         display: inline-block;
@@ -314,6 +316,7 @@ section#experience {
     div.wrap-carousel {
       margin-left: 150px;
       width: calc(100% - 150px);
+      padding-bottom: 0;
 
       div.wrap-nav {
         margin-top: 0;
@@ -345,6 +348,13 @@ section#experience {
 }
 
 @include media-breakpoint-up(md) {
+
+  div.slide-our-room {
+    div.wrap-carousel {
+      background: inherit;
+    }
+  }
+
   div.background-our-room {
     //height: 90%;
     top: -12%;

@@ -45,7 +45,6 @@ export default {
 
 section#we-are-the-one {
   padding: 0 10rem;
-  margin-bottom: 10rem;
 
   div.wrap-content {
     align-items: flex-start;
@@ -125,13 +124,14 @@ section#we-are-the-one {
 @include media-breakpoint-up(xs) {
   section#we-are-the-one {
     padding: 0 3rem;
+    margin-bottom: 5rem;
 
     div.right-side {
       div.wrap-title {
         text-align: center;
         margin-left: 0;
         h1 {
-          font-size: 2.5rem;
+          font-size: 2rem;
           margin-bottom: 3rem;
         }
       }
@@ -154,6 +154,7 @@ section#we-are-the-one {
 
 @include media-breakpoint-up(md) {
   section#we-are-the-one {
+    margin-bottom: 10rem;
 
     div.right-side {
       div.wrap-image-text {

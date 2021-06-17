@@ -75,7 +75,7 @@ section#main-intro {
 
 @include media-breakpoint-up(xs) {
   section#main-intro {
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
     padding-top: 0;
     div.wrap-image-portrait {
       padding: 0;
@@ -89,7 +89,6 @@ section#main-intro {
 
 @include media-breakpoint-up(sm) {
   section#main-intro {
-    margin-bottom: 5rem;
 
     div.wrap-content-intro {
       margin-bottom: 3rem;

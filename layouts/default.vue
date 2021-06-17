@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-fluid">
+    <div class="container-fluid g-0 overflow-hidden">
       <div class="row">
         <div class="col-2 col-md-1 g-0 custom-col-sidebar position-fixed">
           <side-nav-bar></side-nav-bar>

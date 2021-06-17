@@ -1,7 +1,7 @@
 <template>
   <section id="footer-brand">
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center g-0">
         <div class="warp-footer-brand col-12 align-self-center">
           <div class="footer-brand-slide">
             <!-- Slider main container -->

@@ -18,7 +18,7 @@
     </div>
 
     <div class="wrap-trip-album">
-      <div class="row">
+      <div class="row g-0">
         <div class="col-6">
           <div class="box-image">
             <img src="@/static/images/trip/trip1.jpg" class="img-fluid" alt="">
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row  g-0">
         <div class="col-6 col-lg-4 second-row">
           <div class="box-image">
             <img src="@/static/images/trip/trip3.jpg" class="img-fluid" alt="">
@@ -172,7 +172,7 @@ div.wrap-trip-album {
 
 @include media-breakpoint-up(xs) {
   section#trip {
-    margin-bottom: 15rem;
+    margin-bottom: 8rem;
   }
 
   div.wrap-text p {
@@ -181,8 +181,10 @@ div.wrap-trip-album {
   }
 
   div.wrap-trip-album {
-    padding: 0 3rem;
+    padding: 0;
     margin-top: 5rem;
+    position: relative;
+    ;
 
     div[class^="col"] {
       div.box-image {
@@ -199,6 +201,10 @@ div.wrap-trip-album {
 }
 
 @include media-breakpoint-up(lg) {
+  section#trip {
+    margin-bottom: 15rem;
+  }
+
   div.wrap-text p {
     padding: 0 3rem;
     text-align: center;
